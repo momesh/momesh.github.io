@@ -1,6 +1,6 @@
 ## MOMesh
 
-MOMesh is a community owned and operated wireless network, operating in Missouri.
+MOMesh is a community owned and operated wireless network in Missouri.
 
 We are just getting started.
 
