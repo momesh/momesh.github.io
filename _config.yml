@@ -1,7 +1,7 @@
 title: momesh.org
 domain: momesh.org
 url: https://momesh.org
-source: content
+source: docs
 
 
 # TODO: configuration for search: https://just-the-docs.github.io/just-the-docs/docs/configuration/
@@ -20,7 +20,7 @@ gh_edit_link: true
 gh_edit_link_text: "Edit this page on GitHub"
 gh_edit_repository: "https://github.com/momesh/momesh.github.io"
 gh_edit_branch: "main"
-#gh_edit_source: content # the source that your files originate from
+#gh_edit_source: docs # the source that your files originate from
 gh_edit_view_mode: "edit" # "tree" or "edit" if you want the user to jump into the editor immediately
 
 exclude:
@@ -28,5 +28,3 @@ exclude:
   - bundle
   - GITHUB_PAGES_README.md
   - README.md
-
-
