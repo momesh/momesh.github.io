@@ -10,6 +10,6 @@ build: .bundle
 	bundle exec jekyll build
 
 .PHONY: serve
-serve: build
+serve:
 	# site is on http://localhost:4000, should reload when you edit files
 	bundle exec jekyll serve --livereload

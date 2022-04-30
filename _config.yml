@@ -1,6 +1,25 @@
+title: momesh.org
 domain: momesh.org
-theme: jekyll-theme-minimal
 url: https://momesh.org
+source: content
+
+
+# TODO: configuration for search: https://just-the-docs.github.io/just-the-docs/docs/configuration/
+remote_theme: just-the-docs/just-the-docs
+aux_links_new_tab: false
+aux_links:
+  "FAQ": ["/faq"]
+  "About": ["/about"]
+  "Home": ["/"]
+heading_anchors: true
+
+
+gh_edit_link: true
+gh_edit_link_text: "Edit this page on GitHub"
+gh_edit_repository: "https://github.com/momesh/momesh.github.io"
+gh_edit_branch: "main"
+#gh_edit_source: content # the source that your files originate from
+gh_edit_view_mode: "edit" # "tree" or "edit" if you want the user to jump into the editor immediately
 
 exclude:
   - vendor
