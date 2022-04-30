@@ -1,3 +1,6 @@
+---
+hidden: true
+---
 # momesh.org
 
 This repo houses the jekyll website backing [momesh.org](https://momesh.org). It is hosted on Github Pages. Source is available at https://github.com/momesh/momesh.github.io
