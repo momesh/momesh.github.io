@@ -26,5 +26,7 @@ gh_edit_view_mode: "edit" # "tree" or "edit" if you want the user to jump into t
 exclude:
   - vendor
   - bundle
+  - GITHUB_PAGES_README.md
+  - README.md
 
 
