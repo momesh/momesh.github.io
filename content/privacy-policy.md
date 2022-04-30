@@ -1,3 +1,9 @@
+---
+title: Privacy Policy
+parent: Home
+nav_order: 999
+---
+
 # Privacy Policy
 
 ## Our Collection and Use of Anonymized Data
