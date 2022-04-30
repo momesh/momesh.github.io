@@ -24,16 +24,8 @@ nav_order: 2
 ### Getting Connected to the mesh
 
 -   [How can I tell if I’m in the coverage zone for MOMesh?](#covered)
--   [How do I get roof access?](#roof)
--   [My neighbor is connected to MOMesh. Can I also connect?](#alsouse)
--   [What is the wait time for an installation?](#waittime)
 -   [What is involved in a typical installation?](#typicalinstall)
 -   [What will the hardware setup look like?](#hardwaresetup)
--   [How should I prepare before the install team arrives?](#prepare)
--   [What happens if the install team can’t connect me to the mesh?](#nogo)
--   [Can I install a router if I have no view or no rooftop access?](#noview)
--   [Can I install the hardware and connect to MOMesh on my own?](#bymylonesome)
--   [Can I use any router to connect?](#anyrouter)
 
 
 ## About MOMesh
@@ -59,7 +51,6 @@ Most MOMesh community members (“nodes”) have wireless routers mounted on a r
 
 Our network peers (connects) with many other networks at an [Internet exchange point (IXP)](https://en.wikipedia.org/wiki/Internet_exchange_point), providing direct access to the Internet without the intermediary of a commercial Internet Service Provider. MOMesh maintains a number of primary Internet exchange points that we call “Supernodes.”
 
-
 ### <a name="security"></a>Is the Mesh secure?
 
 By default, our mesh router is firewalled from your local network. It is not possible to reach beyond the mesh router to your local access network (LAN).
@@ -79,7 +70,6 @@ See our [Privacy Policy](/privacy-policy).
 
 After reading through the FAQs, fill out the [join form](/join). If you would like to volunteer with MOMesh, please mention so!
 
-
 ### <a name="cost"></a>Is there a cost to join?
 
 MOMesh believes that the Internet is for everyone. By operating as a volunteer run organization, we keep costs as low as possible.
@@ -87,13 +77,13 @@ MOMesh believes that the Internet is for everyone. By operating as a volunteer r
 - Average equipment cost: **~$240** (see [equipment](/equipment) for details)
 - Average installation costs: **$50** (including mounting gear, hardware, cable, etc: [DIY](/diy))
 
-Once connected, if you can afford it, we also recommend that you set up a recurring monthly donation of $20, $30, $50, or even $60. We rely on these donations to maintain and expand our network. We are all volunteers to 100% of these contributions go to building and maintaining the network.
+Once connected, if you can afford it, we also recommend that you set up a [recurring monthly donation](/donate) of $20, $30, $50, or even $60. We rely on these donations to maintain and expand our network. We are all volunteers to 100% of these contributions go to building and maintaining the network.
 
 If the above suggested donations are too much for you to afford, we can get you connected all the same, just reach out! Internet is a human right.
 
 ### <a name="free"></a>I heard that MOMesh was free Internet. Is that true?
 
-We believe EVERYONE should be able to connect online. That said, the [wireless equipment](/equipment) we use to connect you and your neighbors does cost money. We ask those who can afford it to donate a reasonable amount monthly, or to volunteer by helping connect your neighbors, or both!
+We believe EVERYONE should be able to connect online. That said, the [wireless equipment](/equipment) we use to connect you and your neighbors does cost money. We ask those who can afford it to [donate](/donate) a reasonable amount monthly, or to volunteer by helping connect your neighbors, or both!
 
 ### <a name="obligations"></a>What are my obligations as a MOMesh community member?
 
@@ -104,3 +94,39 @@ At a minimum, this requires providing power to your rooftop router so that other
 ### <a name="volunteer"></a>How can I volunteer? What if I don't know anything about networking?
 
 If you are a DIY-er, take a peek at [DIY installs](/diy).
+
+## Getting Connected to the mesh
+
+### <a name="covered"></a>How can I tell if I’m in the coverage zone for MOMesh?
+
+Line-of-sight to a MOMesh hub, or nearby node, is required to join the mesh. See whether you can use binoculars to see a nearby hub - if yes, theres a great chance you can be connected!
+
+We will have a public coverage map online soon!
+
+### <a name="typicalinstall"></a>What is involved in a typical installation?
+
+For a volunteer-led install, MOMesh will send a team of volunteers to your building to conduct a site survey. If we can connect to an existing node from your rooftop or property, we will install all the necessary hardware to get you connected to the Mesh.
+
+Typically, installs can be completed in an afternoon, but in certain cases they can take longer. We also invite you to participate in the install so that you can learn about how your new Internet connection works.
+
+Most installations proceed in the following order:
+
+- Survey the apartment and rooftop
+- Decide where ethernet cable should enter the dwelling
+- Test signal strength to confirm connection is possible
+- Install mounting hardware and align router
+- Run cable into dwelling
+- Set up indoor WiFi router
+- Speed test
+- Clean up
+
+In case of bad weather conditions, we will notify you that the install has been canceled and will invite you to make a new appointment.
+
+### <a name="hardwaresetup"></a>What will the hardware setup look like?
+
+This greatly depends on what hubs you have line-of-sight visibility to, and what types of radios the hub has. A node will have 1-3 rooftop outdoor wifi routers, mounted on a J pipe or similar mast, with an unobstructed view of the hub you intend to connect to.
+
+The rooftop routers are powered by a power injector, sending power over the ethernet cable up to your roof.
+
+You can take a closer look at the [wireless equipment](/equipment) we use to build the network.
+

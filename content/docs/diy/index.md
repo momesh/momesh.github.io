@@ -1,5 +1,7 @@
 ---
 title: DIY
+parent: Docs
+published: false
 has_children: true
 ---
 
