@@ -1,7 +1,7 @@
 title: momesh.org
 domain: momesh.org
 url: https://momesh.org
-source: docs
+source: .
 
 
 # TODO: configuration for search: https://just-the-docs.github.io/just-the-docs/docs/configuration/
