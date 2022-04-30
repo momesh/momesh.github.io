@@ -1,7 +1,7 @@
 ---
 title: Docs
 has_children: true
-published: false
+nav_order: 3
 ---
 
 # Documentation
