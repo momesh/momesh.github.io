@@ -2,6 +2,7 @@
 title: Omnitik 5AC PoE
 grand_parent: Equipment
 parent: Mikrotik Hardware
+categories: [ device, mesh ]
 ---
 
 # Omnitik 5AC PoE
