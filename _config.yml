@@ -1,1 +1,7 @@
+domain: momesh.org
 theme: jekyll-theme-minimal
+url: https://momesh.org
+
+exclude:
+  - vendor
+  - bundle
