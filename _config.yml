@@ -5,7 +5,7 @@ source: .
 
 webrick:
   headers:
-    Access-Control-Allow-Origin: "*" # necessary to make just-the-docs search work in github pages
+    Access-Control-Allow-Origin: "https://momesh.org" # necessary to make just-the-docs search work in github pages
 
 
 # TODO: configuration for search: https://just-the-docs.github.io/just-the-docs/docs/configuration/
