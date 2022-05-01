@@ -3,6 +3,8 @@ domain: www.momesh.org
 url: https://www.momesh.org
 source: .
 
+color_scheme: momesh
+
 webrick:
   headers:
     Access-Control-Allow-Origin: "https://www.momesh.org" # necessary to make just-the-docs search work in github pages
