@@ -75,7 +75,7 @@ After reading through the FAQs, fill out the [join form](/join). If you would li
 MOMesh believes that the Internet is for everyone. By operating as a volunteer run organization, we keep costs as low as possible.
 
 - Average equipment cost: **~$240** (see [equipment](/equipment) for details)
-- Average installation costs: **$50** (including mounting gear, hardware, cable, etc: [DIY](/docs/diy))
+- Average installation costs: **$50** (including mounting gear, hardware, cable, etc)
 
 Once connected, if you can afford it, we also recommend that you set up a [recurring monthly donation](/donate) of $20, $30, $50, or even $60. We rely on these donations to maintain and expand our network. We are all volunteers to 100% of these contributions go to building and maintaining the network.
 
@@ -93,7 +93,7 @@ At a minimum, this requires providing power to your rooftop router so that other
 
 ### <a name="volunteer"></a>How can I volunteer? What if I don't know anything about networking?
 
-If you are a DIY-er, take a peek at [DIY installs](/docs/diy).
+You do not need to know networking to help out! Please [reach out](/join) if you are interested in contributing.
 
 ## Getting Connected to the mesh
 
