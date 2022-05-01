@@ -3,6 +3,10 @@ domain: momesh.org
 url: https://momesh.org
 source: .
 
+webrick:
+  headers:
+    Access-Control-Allow-Origin: "*" # necessary to make just-the-docs search work in github pages
+
 
 # TODO: configuration for search: https://just-the-docs.github.io/just-the-docs/docs/configuration/
 remote_theme: just-the-docs/just-the-docs
