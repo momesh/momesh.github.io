@@ -1,11 +1,11 @@
 title: momesh.org
-domain: momesh.org
-url: https://momesh.org
+domain: www.momesh.org
+url: https://www.momesh.org
 source: .
 
 webrick:
   headers:
-    Access-Control-Allow-Origin: "https://momesh.org" # necessary to make just-the-docs search work in github pages
+    Access-Control-Allow-Origin: "https://www.momesh.org" # necessary to make just-the-docs search work in github pages
 
 
 # TODO: configuration for search: https://just-the-docs.github.io/just-the-docs/docs/configuration/
