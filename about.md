@@ -4,7 +4,7 @@ parent: Home
 nav_order: 1
 ---
 
-## About Us
+# About Us
 
 MOMesh is a community operated WISP (wireless internet service provider), focused on connecting underserved communities, committed to transparency and open source.
 

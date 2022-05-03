@@ -8,6 +8,8 @@ grand_parent: Docs
 
 MOMesh network architecture is intentionally similar to NYC Mesh (you can read more about that [here](https://docs.nycmesh.net/networking/10-69-net-network/)). Use what works :)
 
+We use a combination of PTP, PTMP, and OSPF meshing to create our network.
+
 ## Mesh Network (`10-69-net` or 10.69.0.0/16)
 
 Each mesh router gets an IP from here. Each router in the mesh will advertise a `/32` route to `224.0.0.5` (OSFP multicast).

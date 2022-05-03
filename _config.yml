@@ -15,9 +15,10 @@ remote_theme: just-the-docs/just-the-docs
 aux_links_new_tab: false
 aux_links:
   "FAQ": ["/faq"]
-  "About": ["/about"]
   "Donate": ["/donate"]
   "Join": ["/join"]
+  "Support": ["/support"]
+  "Status": ["/status"]
   "Home": ["/"]
 heading_anchors: true
 
