@@ -5,9 +5,14 @@ hidden: true
 
 This repo houses the jekyll website backing [momesh.org](https://momesh.org). It is hosted on Github Pages. Source is available at https://github.com/momesh/momesh.github.io
 
+## Dependencies
+
+- Unix-y computer (MacOS, Linux - no idea if this works on windows)
+- Ruby (2.7+)
+- Ruby Bundler
+
 ## Making changes
 
-You will need to have a unix-y computer with Ruby to compile and serve the site locally:
 
 ```
 $ make serve
