@@ -10,7 +10,7 @@ MOMesh network architecture is intentionally similar to NYC Mesh (you can read m
 
 We use a combination of PTP, PTMP, and OSPF meshing to create our network.
 
-## Mesh Network (`10-69-net` or 10.69.0.0/16)
+## Mesh Network: `10.69.0.0/16`
 
 Each mesh router gets an IP from here. Each router in the mesh will advertise a `/32` route to `224.0.0.5` (OSFP multicast).
 
@@ -23,9 +23,11 @@ Node `0123` implies router IP `10.69.1.23`, where `1234` has `10.69.12.34`. This
 | 0000 | 10.69.0.0 | 10.69.0.100 |
 | 0123 | 10.69.1.23 | 10.69.1.123 |
 
-## Internal Network (10.96.0.0/26)
+## Internal Network: `10.96.0.0/16`
 
-A `/26` (64 IPs) is statically allocated in each router (in our default configurations), used to distribute DHCP IPs to devices behind a node (i.e. your home router).
+In each [node's](/docs/architecture/nodes) router, we compute a `/26` (64 IPs) out of `10.96.0.0/16` based on the node number. This subnet is used to distribute DHCP IPs to devices behind that node (i.e. your home router, PTP routers, neighbors routers via ethernet).
+
+### Router IP Addresses
 
 You can compute your internal network CIDR from a node number like so:
 
