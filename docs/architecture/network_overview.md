@@ -55,7 +55,7 @@ ARGV.each do {|arg| net_for_node(arg.to_i) }
 
 ## OSPF
 
-We use OSPF for meshing between [omnitiks](/equipment/mikrotik/omnitik).
+These are the OSPF settings we use:
 
 1. General
     1. All OSPF usage will be on area `0.0.0.0` ( backbone area )
