@@ -35,12 +35,14 @@ You can compute your internal network CIDR from a node number like so:
 
 ```ruby
 require 'ipaddr'
-ARGV.each do |arg|
-  n = arg.to_i
+
+def net_for_node(n)
   net_s = "10.#{ 96 + (n >> 10) }.#{ (n >> 2) & 255 }.#{ ((n & 3) <<6) }/26"
   addrs = IPAddr.new(net_s).to_range
   puts "Net: #{net_s}\nAddresses: #{addrs.count}\nLast IP: #{addrs.last}"
 end
+
+ARGV.each do {|arg| net_for_node(arg.to_i) }
 
 # Invocation: ./net_for_node 123
 # Result:
