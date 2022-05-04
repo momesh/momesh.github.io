@@ -27,6 +27,28 @@ Node `0123` implies router IP `10.69.1.23`, where `1234` has `10.69.12.34`. This
 
 A `/26` (64 IPs) is statically allocated in each router (in our default configurations), used to distribute DHCP IPs to devices behind a node (i.e. your home router).
 
+You can compute your internal network CIDR from a node number like so:
+
+<script>
+/* TODO: put this logic into JS and embed a simple converter straight into the docs
+</script>
+
+```ruby
+require 'ipaddr'
+ARGV.each do |arg|
+  n = arg.to_i
+  net_s = "10.#{ 96 + (n >> 10) }.#{ (n >> 2) & 255 }.#{ ((n & 3) <<6) }/26"
+  addrs = IPAddr.new(net_s).to_range
+  puts "Net: #{net_s}\nAddresses: #{addrs.count}\nLast IP: #{addrs.last}"
+end
+
+# Invocation: ./net_for_node 123
+# Result:
+# Net: 10.96.30.192/26
+# Addresses: 64
+# Last IP: 10.96.30.255
+```
+
 ## OSPF
 
 We use OSPF for meshing between [omnitiks](/equipment/mikrotik/omnitik).
