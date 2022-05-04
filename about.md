@@ -15,3 +15,7 @@ By joining our network, you agree to extend access to others. Growing the mesh h
 ## Contact
 
 You can email us at <a href="mailto:contact@momesh.org">contact@momesh.org</a>
+
+## Open Source
+
+See [github.com/momesh](https://github.com/momesh)
