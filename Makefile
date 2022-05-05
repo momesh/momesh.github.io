@@ -7,6 +7,7 @@ clean: .bundle
 
 .PHONY: build
 build: .bundle
+	# TODO: find -name  "*.md" -exec yq --front-matter="process" '.updated_at = now' {} \;
 	bundle exec jekyll build
 
 .PHONY: serve
