@@ -1,3 +1,6 @@
+
+# openlayers source: https://github.com/openlayers/openlayers/releases/download/v6.14.1/6.14.1-dist.zip 
+
 .bundle:
 	bundle install --path .bundle
 

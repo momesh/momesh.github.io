@@ -1,6 +1,7 @@
 ---
 title: Status
 nav_order: 999
+published: false
 ---
 
 # Network Status
