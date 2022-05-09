@@ -23,7 +23,6 @@ We are focused on bringing mesh access to the Pinnacle Lake area right now. This
 Check back soon to see how our network is growing!
 
 
-<body>
 <div id="momesh-map" class="map"></div>
 <script type="text/javascript">
   var map = new ol.Map({
@@ -39,6 +38,3 @@ Check back soon to see how our network is growing!
     })
   });
 </script>
-</body>
-
-
