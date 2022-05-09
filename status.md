@@ -1,14 +1,13 @@
 ---
 title: Status
 nav_order: 999
-published: false
+published: true
 ---
 
 # Network Status
 
-Coming soon: live health of our network!
+Current status: <span style="color:green; font-weight:bold">Online</span>
 
-TODO: embed network topology map
+## Updates
 
-- TODO: Grafana Overview link
-- TODO: UISP link
+_no updates_
