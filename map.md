@@ -12,6 +12,15 @@ nav_order: 3
       height: 550px;
       width: 100%;
     }
+    span.node-potential {
+      color: gray;
+    }
+    span.node-active {
+      color: blue;
+    }
+    span.datalink-active {
+      color: green;
+    }
   </style>
   <script src="/assets/js/ol.js"></script>
 </head>
@@ -24,21 +33,33 @@ Check back soon to see how our network is growing!
 
 
 <div id="momesh-map" class="map"></div>
+
+## Legend
+
+- <span class="node-potential">Potential Nodes</span> <span id="nodes-potential-total"></span>
+- <span class="node-active">Active Nodes</span> <span id="nodes-potential-total"></span>
+- <span class="datalink-active">Point to point Links</span> <span id="datalinks-total"></span>
+
 <script type="text/javascript">
   var target = 'momesh-map';
 
-  var populateMap = function(geojson){
 
     var nodeHubStyle = new ol.style.Circle({
       radius: 5,
       fill: new ol.style.Fill({color: 'blue'}),
-      stroke: null, //new ol.style.Stroke({color: 'blue', width: 1}),
+      stroke: null,
+    });
+
+    var nodeStyle = new ol.style.Circle({
+      radius: 5,
+      fill: new ol.style.Fill({color: 'red'}),
+      stroke: null,
     });
 
     var nodePotentialStyle = new ol.style.Circle({
       radius: 5,
       fill: new ol.style.Fill({color: 'gray'}),
-      stroke: null, //new ol.style.Stroke({color: 'blue', width: 1}),
+      stroke: null,
     });
 
     var linkPTPStyle = new ol.style.Stroke({color: 'green', width: 3});
@@ -102,6 +123,17 @@ Check back soon to see how our network is growing!
     };
 
     var styleFunction = function (feature) {
+      var color = feature.get('marker-color');
+      var nn = feature.get('name');
+      var t = feature.get('type');
+      switch(t) {
+        case 'node':
+          return new ol.style.Style({image: nodeStyle});
+        case 'hub':
+          return new ol.style.Style({image: nodeHubStyle});
+        case 'potential':
+          return new ol.style.Style({image: nodePotentialStyle});
+      }
       return styles[feature.getGeometry().getType()];
     };
 
@@ -127,22 +159,6 @@ Check back soon to see how our network is growing!
         zoom: 15
       })
     });
-
-    return map;
-  };
-
-  fetch('/assets/map.geojson')
-    .then(function(res){
-        return res.json().then(function(geojson){
-          console.log("loaded geojson overlay:", geojson);
-          return populateMap(geojson);
-        });
-    }).then(function(out){
-      console.log("map loaded");
-    }).catch(function(err){
-      throw err;
-    });
-
 
 </script>
 
