@@ -5,7 +5,8 @@ var groupFeaturesBy = function (xs, keyFn) {
   }, {});
 };
 
-var target = 'momesh-map';
+var target = 'momesh-map'; // the target div for the map
+
 var nodeCompositeKey = function (feature) {
   return feature.get('status') + "-" + feature.get('type');
 };
@@ -44,7 +45,6 @@ var createNodeLabel = function (feature, prop) {
     }),
   });
 
-  console.log(textStyle);
   return textStyle;
 };
 
@@ -120,9 +120,9 @@ var styleFunction = function (feature) {
     default:
       switch (t) {
         case 'node':
-          return new ol.style.Style({image: nodeCircle, text: createNodeLabel(feature, 'name')});
+          return new ol.style.Style({image: nodeCircle});
         case 'hub':
-          return new ol.style.Style({image: nodeHubCircle, text: createNodeLabel(feature, 'name')});
+          return new ol.style.Style({image: nodeHubCircle});
         case 'datalink':
           return new ol.style.Style({style: datalinkPTPStroke});
       }
@@ -135,6 +135,10 @@ function onMapMove(evt) {
   var map = evt.map;
 }
 
+var setElementIdHTML = function (id, val) {
+  document.getElementById(id).innerHTML = val;
+};
+
 function onFeaturesLoadEnd(evt) {
   // update legend based on evt.features properties
   // group features by properties.get('type') and 'status'
@@ -144,9 +148,6 @@ function onFeaturesLoadEnd(evt) {
     'potential-nodes-total': 'potential-node',
     'active-nodes-total': 'active-node',
     'active-hubs-total': 'active-hub',
-  };
-  var setElementIdHTML = function (id, val) {
-    document.getElementById(id).innerHTML = val;
   };
   var getValue = function (coll, key) {
     if (key in coll) {
@@ -191,3 +192,43 @@ var map = new ol.Map({
 map.on('moveend', onMapMove);
 
 console.log("created map", map);
+
+// a normal select interaction to handle clicking on a feature
+
+var select = new ol.interaction.Select({
+  style: function (feature) {
+    // when selecting a feature, annotate it with its name
+    let ogStyle = styleFunction(feature);
+    ogStyle.setText(createNodeLabel(feature, 'name'));
+    return ogStyle;
+  },
+});
+
+map.addInteraction(select);
+
+let selectedFeatures = select.getFeatures();
+// when clicking on map features, do something interesting
+selectedFeatures.on(['add', 'remove', 'change'], function () {
+  const features = selectedFeatures.getArray();
+  //TODO: update query params with selection
+  let params = new URLSearchParams();
+  // multiple selections will be encoded with a (',') between them (%2C in query params)
+  params.set('selected', features.map(function (x) {return x.get('name');}));
+
+  // change the current history to reflect the selection without triggering a refresh
+  window.history.replaceState(null, null, '?' + params.toString());
+
+  //let gb = groupFeaturesBy(features, nodeCompositeKey);
+  //console.log("selected:", gb);
+});
+
+// on page load, restore select features that are indicated via query params
+let params = new URLSearchParams(window.location.search);
+let selRaw = params.get('selected');
+if (selRaw) {
+  let ids = selRaw.split(',');
+  for (idx in ids) {
+    let id = ids[idx];
+    console.log("TODO! need to mark", id, "selected in map on page load");
+  }
+}

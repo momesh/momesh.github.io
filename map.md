@@ -21,5 +21,6 @@ We are currently focused on bringing mesh access to the Pinnacle Lake area. Chec
 
 
 <div id="momesh-map" class="map"></div>
+<div id="map-info" class="map-info"></div>
 
 <script src="/assets/js/map.js"></script>
