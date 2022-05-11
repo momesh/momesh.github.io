@@ -10,38 +10,53 @@ var nodeCompositeKey = function (feature) {
   return feature.get('status') + "-" + feature.get('type');
 };
 
-var nodeHubStyle = new ol.style.Circle({
+var nodeHubCircle = new ol.style.Circle({
   radius: 5,
   fill: new ol.style.Fill({color: 'magenta'}),
   stroke: null,
 });
 
-var nodeStyle = new ol.style.Circle({
+var nodeCircle = new ol.style.Circle({
   radius: 5,
   fill: new ol.style.Fill({color: 'blue'}),
   stroke: null,
 });
 
-var nodePotentialStyle = new ol.style.Circle({
+var nodePotentialCircle = new ol.style.Circle({
   radius: 5,
   fill: new ol.style.Fill({color: 'gray'}),
   stroke: null,
 });
 
-var linkPTPStyle = new ol.style.Stroke({color: 'green', width: 3});
+
+var labelStyle = new ol.style.Style({
+  text: new ol.style.Text({
+    font: '12px Calibri,sans-serif',
+    overflow: true,
+    fill: new ol.style.Fill({
+      color: '#000',
+    }),
+    stroke: new ol.style.Stroke({
+      color: '#fff',
+      width: 3,
+    }),
+  }),
+});
+
+var datalinkPTPStroke = new ol.style.Stroke({color: 'rgba(0, 255, 0, 0.4)', width: 5});
 
 var styles = {
   'Point': new ol.style.Style({
-    image: nodeHubStyle,
+    image: nodeHubCircle,
   }),
   'LineString': new ol.style.Style({
-    stroke: linkPTPStyle,
+    stroke: datalinkPTPStroke,
   }),
   'MultiLineString': new ol.style.Style({
-    stroke: linkPTPStyle,
+    stroke: datalinkPTPStroke,
   }),
   'MultiPoint': new ol.style.Style({
-    image: nodeHubStyle,
+    image: nodeHubCircle,
   }),
   'MultiPolygon': new ol.style.Style({
     stroke: new ol.style.Stroke({
@@ -95,21 +110,25 @@ var styleFunction = function (feature) {
   var nn = feature.get('name');
   var t = feature.get('type');
   var s = feature.get('status');
-  if (s == 'potential') {
-    return new ol.style.Style({image: nodePotentialStyle});
-  }
-  switch (t) {
-    case 'node':
-      return new ol.style.Style({image: nodeStyle});
-    case 'hub':
-      return new ol.style.Style({image: nodeHubStyle});
+  switch (s) {
+    case 'potential':
+      return new ol.style.Style({image: nodePotentialCircle});
+    default:
+      switch (t) {
+        case 'node':
+          return new ol.style.Style({image: nodeCircle});
+        case 'hub':
+          return new ol.style.Style({image: nodeHubCircle});
+        case 'datalink':
+          return new ol.style.Style({style: datalinkPTPStroke});
+      }
   }
   return styles[feature.getGeometry().getType()];
 };
 
-function onMoveEnd(evt) {
+function onMapMove(evt) {
+  // TODO: figure out how many nodes are visible in viewport?
   var map = evt.map;
-  console.log("move end:", map);
 }
 
 function onFeaturesLoadEnd(evt) {
@@ -117,14 +136,12 @@ function onFeaturesLoadEnd(evt) {
   // group features by properties.get('type') and 'status'
   // count active hubs, nodes, planned
   var buckets = groupFeaturesBy(evt.features, nodeCompositeKey);
-  console.log("features end", buckets);
   var elems = {
     'potential-nodes-total': 'potential-node',
     'active-nodes-total': 'active-node',
     'active-hubs-total': 'active-hub',
   };
   var setElementIdHTML = function (id, val) {
-    console.log(id);
     document.getElementById(id).innerHTML = val;
   };
   var getValue = function (coll, key) {
@@ -167,8 +184,6 @@ var map = new ol.Map({
   })
 });
 
-map.on('moveend', onMoveEnd);
+map.on('moveend', onMapMove);
 
 console.log("created map", map);
-//map.layers[1].addListener('featuresloadend', function (x) {
-//});
