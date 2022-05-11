@@ -29,19 +29,24 @@ var nodePotentialCircle = new ol.style.Circle({
 });
 
 
-var labelStyle = new ol.style.Style({
-  text: new ol.style.Text({
+var createNodeLabel = function (feature, prop) {
+  var textStyle = new ol.style.Text({
     font: '12px Calibri,sans-serif',
     overflow: true,
     fill: new ol.style.Fill({
       color: '#000',
     }),
+    offsetY: -15,
+    text: feature.get(prop),
     stroke: new ol.style.Stroke({
       color: '#fff',
       width: 3,
     }),
-  }),
-});
+  });
+
+  console.log(textStyle);
+  return textStyle;
+};
 
 var datalinkPTPStroke = new ol.style.Stroke({color: 'rgba(0, 255, 0, 0.4)', width: 5});
 
@@ -104,8 +109,7 @@ var styles = {
 };
 
 var styleFunction = function (feature) {
-  // TODO: handle other features other than points
-  // TODO: handle override marker-color per feature
+  // TODO: handle override marker-color per feature?
   // var color = feature.get('marker-color');
   var nn = feature.get('name');
   var t = feature.get('type');
@@ -116,9 +120,9 @@ var styleFunction = function (feature) {
     default:
       switch (t) {
         case 'node':
-          return new ol.style.Style({image: nodeCircle});
+          return new ol.style.Style({image: nodeCircle, text: createNodeLabel(feature, 'name')});
         case 'hub':
-          return new ol.style.Style({image: nodeHubCircle});
+          return new ol.style.Style({image: nodeHubCircle, text: createNodeLabel(feature, 'name')});
         case 'datalink':
           return new ol.style.Style({style: datalinkPTPStroke});
       }
