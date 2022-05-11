@@ -1,0 +1,16 @@
+.map {
+  height: 550px;
+  width: 100%;
+}
+span.node-potential {
+  color: gray;
+}
+span.node-active {
+  color: blue;
+}
+span.hub-active {
+  color: magenta;
+}
+span.datalink-active {
+  color: green;
+}
