@@ -148,7 +148,7 @@ Check back soon to see how our network is growing!
         }),
         new ol.layer.Vector({
           source: new ol.source.Vector({
-            url: '/assets/map.geojson',
+            url: '/assets/data/map.geojson',
             format: new ol.format.GeoJSON(),
           }),
           style: styleFunction,
