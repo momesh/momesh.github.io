@@ -101,7 +101,7 @@ You do not need to know networking to help out! Please [reach out](/join) if you
 
 Line-of-sight to a MOMesh hub, or nearby node, is required to join the mesh. See whether you can use binoculars to see a nearby hub - if yes, theres a great chance you can be connected!
 
-We will have a public coverage map online soon!
+You can view our [full map here](/map).
 
 ### <a name="typicalinstall"></a>What is involved in a typical installation?
 
