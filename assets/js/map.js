@@ -30,7 +30,7 @@ var nodePotentialCircle = new ol.style.Circle({
 });
 
 
-var createNodeLabel = function (feature, prop) {
+var createNodeLabel = function (text) {
   var textStyle = new ol.style.Text({
     font: '12px Calibri,sans-serif',
     overflow: true,
@@ -38,7 +38,7 @@ var createNodeLabel = function (feature, prop) {
       color: '#000',
     }),
     offsetY: -15,
-    text: feature.get(prop),
+    text: text,
     stroke: new ol.style.Stroke({
       color: '#fff',
       width: 3,
@@ -111,9 +111,10 @@ var styles = {
 var styleFunction = function (feature) {
   // TODO: handle override marker-color per feature?
   // var color = feature.get('marker-color');
-  var nn = feature.get('name');
-  var t = feature.get('type');
-  var s = feature.get('status');
+  //var nn = feature.get('nn');     // network number, only if node is active
+  var t = feature.get('type');    // node, hub, datalink
+  var s = feature.get('status');  // active, potential
+  //var site = feature.get('site'); // site identifier
   switch (s) {
     case 'potential':
       return new ol.style.Style({image: nodePotentialCircle});
@@ -199,7 +200,22 @@ var select = new ol.interaction.Select({
   style: function (feature) {
     // when selecting a feature, annotate it with its name
     let ogStyle = styleFunction(feature);
-    ogStyle.setText(createNodeLabel(feature, 'name'));
+    let text = '';
+    switch (feature.get('status')) {
+      case 'potential':
+        text = 'potential';
+        break;
+      default:
+        if (feature.get('name')) {
+          text = feature.get('name');
+        } else {
+          let site = feature.get('site') || '?';
+          let nn = feature.get('nn') || '?';
+          // site 22 nn 43 -> s22n43
+          text = "s" + site + "n" + nn;
+        }
+    }
+    ogStyle.setText(createNodeLabel(text));
     return ogStyle;
   },
 });
@@ -207,15 +223,18 @@ var select = new ol.interaction.Select({
 map.addInteraction(select);
 
 let selectedFeatures = select.getFeatures();
-// when clicking on map features, do something interesting
 selectedFeatures.on(['add', 'remove', 'change'], function () {
   const features = selectedFeatures.getArray();
   //TODO: update query params with selection
   let params = new URLSearchParams();
   // multiple selections will be encoded with a (',') between them (%2C in query params)
-  params.set('selected', features.map(function (x) {return x.get('name');}));
+  params.set('selected', features.map(function (x) {return x.get('nn');}));
 
   // change the current history to reflect the selection without triggering a refresh
+  if (features.length == 0) {
+    window.history.replaceState(null, null, '?');
+    return;
+  }
   window.history.replaceState(null, null, '?' + params.toString());
 
   //let gb = groupFeaturesBy(features, nodeCompositeKey);
@@ -227,8 +246,9 @@ let params = new URLSearchParams(window.location.search);
 let selRaw = params.get('selected');
 if (selRaw) {
   let ids = selRaw.split(',');
+  // TODO: handle empty ids
   for (idx in ids) {
-    let id = ids[idx];
-    console.log("TODO! need to mark", id, "selected in map on page load");
+    let nn = ids[idx];
+    console.log("TODO! need to mark nn", nn, "selected in map on page load");
   }
 }
