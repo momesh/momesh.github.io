@@ -195,26 +195,30 @@ map.on('moveend', onMapMove);
 console.log("created map", map);
 
 // a normal select interaction to handle clicking on a feature
+var getFeatureLabelText = function (feature) {
+  let name = feature.get('name');
+  let status = feature.get('status');
+  //let site = feature.get('site');
+  let nn = feature.get('nn');
+  let type = feature.get('type');
+  // site 22 nn 43 -> s22n43
+  if (status == 'potential') {
+    return status + " " + type;
+  }
+  if (name) {
+    return name;
+  }
+  if (type && nn) {
+    return type + " " + nn;
+  }
+  return '';
+};
 
 var select = new ol.interaction.Select({
   style: function (feature) {
     // when selecting a feature, annotate it with its name
     let ogStyle = styleFunction(feature);
-    let text = '';
-    switch (feature.get('status')) {
-      case 'potential':
-        text = 'potential';
-        break;
-      default:
-        if (feature.get('name')) {
-          text = feature.get('name');
-        } else {
-          let site = feature.get('site') || '?';
-          let nn = feature.get('nn') || '?';
-          // site 22 nn 43 -> s22n43
-          text = "s" + site + "n" + nn;
-        }
-    }
+    let text = getFeatureLabelText(feature);
     ogStyle.setText(createNodeLabel(text));
     return ogStyle;
   },
