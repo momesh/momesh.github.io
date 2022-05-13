@@ -21,14 +21,15 @@ nav_order: 2
 -   [What are my obligations as a MOMesh community member?](#obligations)
 -   [How can I volunteer? What if I don’t know anything about networking?](#volunteer)
 -   [What if I already have Starlink, or want to keep my existing provider as backup?](#dualwan)
--   [Will joining the Mesh mean other mesh users will use my Starlink connection?](#connectionsharing)
+-   [Will joining the Mesh mean other Mesh users will use my Starlink connection?](#connectionsharing)
 
 
-### Getting Connected to the mesh
+### Getting Connected to the Mesh
 
 -   [How can I tell if I’m in the coverage zone for MOMesh?](#covered)
 -   [What is involved in a typical installation?](#typicalinstall)
 -   [What will the hardware setup look like?](#hardwaresetup)
+-   [Can I use my existing home router?](#indoorrouter)
 
 
 ## About MOMesh
@@ -56,11 +57,11 @@ Our network peers (connects) with many other networks at an [Internet exchange p
 
 ### <a name="security"></a>Is the Mesh secure?
 
-By default, our mesh router is firewalled from your local network. It is not possible to reach beyond the mesh router to your local access network (LAN).
+Our rooftop mesh router is firewalled from your local (i.e. home) network. It is not possible to reach beyond the mesh router to your local access network (LAN).
 
-The mesh internet connection to your dwelling is secure using standard WPA2 encryption. Traffic between nodes on the mesh is also encrypted using WPA2. We also support VPN connections for an additional layer of security.
+The wireless connection between your rooftop router and neighbors is secured using standard WPA2 encryption. Traffic between nodes on the Mesh is also encrypted using WPA2. We also support VPN connections for an additional layer of security.
 
-When connecting through the mesh from the street (i.e. with `-MOMesh Community Internet-` SSID) you should use the same standard precautions as you would when connecting to WiFi at a coffee shop or airport: use [https](https://en.wikipedia.org/wiki/HTTPS) (lock icon) web sites for secure connections (most browsers do this by default nowadays), or use a VPN service.
+When connecting to the internet through the mesh outdoors (i.e. `-MOMesh Community Internet-` SSID) you should use the same standard precautions as you would when connecting to WiFi at a coffee shop or airport: use [https](https://en.wikipedia.org/wiki/HTTPS) (lock icon) web sites for secure connections (most browsers do this by default nowadays), or use a VPN service.
 
 ### <a name="data"></a>What is your user data policy?
 
@@ -90,9 +91,11 @@ We believe EVERYONE should be able to connect online. That said, the [wireless e
 
 ### <a name="obligations"></a>What are my obligations as a MOMesh community member?
 
-By joining the Mesh you are obliged to share and extend the Mesh in the same way that it was shared with you (details: [Network Commons License](./network-commons-license)).
+By joining the Mesh, you are obliged to share and extend the Mesh in the same way that it was shared with you (details: [Network Commons License](./network-commons-license)).
 
 At a minimum, this requires providing power to your rooftop router so that other members can connect to it. (It uses less power in a whole day than it takes to lightly toast a slice of bread). We may also request access to your rooftop after the initial installation in order to upgrade the rooftop router infrastructure. You are not obligated to pay a monthly fee although we suggest a recurring donation if you can afford it to help keep the network running and growing.
+
+Also relevant: [#connectionsharing](#connectionsharing)
 
 ### <a name="volunteer"></a>How can I volunteer? What if I don't know anything about networking?
 
@@ -104,17 +107,17 @@ Joining the Mesh is a great compliment to an existing internet connection!
 
 If you already have an internet connection, you can use Mesh as your backup connection by using a "Dual WAN" capable indoor router (todo: good low-cost recommendation, like Ubiquiti ER-X?). Your indoor router will automatically detect and failover between the Mesh and your other provider.
 
-### <a name="connectionsharing"></a>Will joining the Mesh mean other mesh users will use my Starlink connection?
+### <a name="connectionsharing"></a>Will joining the Mesh mean other Mesh users will use my Starlink connection?
 
 No.
 
-Your private starlink/DSL/satellite internet you may have is firewalled from the mesh. We do not send any traffic out of your personal internet provider. 
+Your private starlink/DSL/satellite internet is completely firewalled from the Mesh. We do not send any traffic out of your personal internet provider. 
 
-## Getting Connected to the mesh
+## Getting Connected to the Mesh
 
 ### <a name="covered"></a>How can I tell if I’m in the coverage zone for MOMesh?
 
-Line-of-sight to a MOMesh hub, or nearby node, is required to join the mesh. See whether you can use binoculars to see a nearby hub - if yes, theres a great chance you can be connected!
+Line-of-sight to a MOMesh hub, or nearby node, is required to join the Mesh. See whether you can use binoculars to see a nearby hub - if yes, theres a great chance you can be connected!
 
 You can view our [full map here](/map).
 
@@ -145,4 +148,9 @@ The rooftop routers are powered by a power injector, sending power over the ethe
 
 You can take a closer look at the [wireless equipment](/equipment) we use to build the network.
 
+### <a name="indoorrouter"></a>Can I use my existing home router?
+
+Absolutely! You can continue to use your existing home router, or indoor mesh system (i.e. Orbi, Google Wifi, etc) with internet service via MOMesh.
+
+Also relevant: [#dualwan](#dualwan)
 
