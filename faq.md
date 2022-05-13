@@ -20,6 +20,9 @@ nav_order: 2
 -   [I heard that MOMesh is free Internet. Is that true?](#free)
 -   [What are my obligations as a MOMesh community member?](#obligations)
 -   [How can I volunteer? What if I don’t know anything about networking?](#volunteer)
+-   [What if I already have Starlink, or want to keep my existing provider as backup?](#dualwan)
+-   [Will joining the Mesh mean other mesh users will use my Starlink connection?](#connectionsharing)
+
 
 ### Getting Connected to the mesh
 
@@ -93,7 +96,19 @@ At a minimum, this requires providing power to your rooftop router so that other
 
 ### <a name="volunteer"></a>How can I volunteer? What if I don't know anything about networking?
 
-You do not need to know networking to help out! Please [reach out](/join) if you are interested in contributing.
+We need your help! You do not need to know networking to help out! Please [reach out](/join) if you are interested in contributing to build our network.
+
+### <a name="dualwan"></a>What if I already have Starlink, or want to keep my existing provider as backup?
+
+Joining the Mesh is a great compliment to an existing internet connection!
+
+If you already have an internet connection, you can use Mesh as your backup connection by using a "Dual WAN" capable indoor router (todo: good low-cost recommendation, like Ubiquiti ER-X?). Your indoor router will automatically detect and failover between the Mesh and your other provider.
+
+### <a name="connectionsharing"></a>Will joining the Mesh mean other mesh users will use my Starlink connection?
+
+No.
+
+Your private starlink/DSL/satellite internet you may have is firewalled from the mesh. We do not send any traffic out of your personal internet provider. 
 
 ## Getting Connected to the mesh
 
@@ -129,4 +144,5 @@ This greatly depends on what hubs you have line-of-sight visibility to, and what
 The rooftop routers are powered by a power injector, sending power over the ethernet cable up to your roof.
 
 You can take a closer look at the [wireless equipment](/equipment) we use to build the network.
+
 
