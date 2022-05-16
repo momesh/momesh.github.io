@@ -1,7 +1,7 @@
 ---
 title: Hubs
-parent: Architecture
-grand_parent: Docs
+layout: docs
+parent: Docs
 ---
 
 # Hubs

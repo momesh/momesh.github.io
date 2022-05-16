@@ -1,8 +1,8 @@
 ---
 title: Nodes
-parent: Architecture
-grand_parent: Docs
+parent: Docs
 nav_order: 1
+layout: docs
 ---
 
 # Nodes

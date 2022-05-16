@@ -1,0 +1,14 @@
+---
+layout: default
+---
+
+{{ content }}
+
+
+<hr>
+
+<div class="tag-section">
+  {% for tag in page.tags %}
+  <span class="tag-label">{{tag}}</span>
+  {% endfor %}
+</div>

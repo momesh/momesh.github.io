@@ -1,7 +1,9 @@
 ---
+layout: docs
 title: Network Overview
-parent: Architecture
-grand_parent: Docs
+parent: Docs
+tags:
+- architecture
 ---
 
 # Network Overview

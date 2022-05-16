@@ -10,11 +10,6 @@ webrick:
   headers:
     Access-Control-Allow-Origin: "https://www.momesh.org" # necessary to make just-the-docs search work in github pages
 
-collections:
-  equipment:
-    output: true
-
-# TODO: configuration for search: https://just-the-docs.github.io/just-the-docs/docs/configuration/
 remote_theme: just-the-docs/just-the-docs
 aux_links_new_tab: false
 aux_links:
@@ -39,3 +34,11 @@ exclude:
   - bundle
   - GITHUB_PAGES_README.md
   - README.md
+
+collections:
+  docs:
+    permalink: "/:collection/:path"
+    output: true
+  equipment:
+    permalink: "/:collection/:path"
+    output: true

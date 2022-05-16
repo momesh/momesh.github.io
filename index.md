@@ -20,6 +20,6 @@ MOMesh is building a community owned and operated wireless network and WISP in M
 - [**Get Connected**](/join) for reliable, community-owned internet
 - [**Read the FAQ**](/faq) to learn about how MOMesh works
 - [**Donate**](/donate) to help us expand the network
-- [**Learn**](/docs/architecture) about our [network](/docs/architecture/network_overview) and [gear](/equipment)
+- [**Learn**](/docs) about our [network](/docs/network_overview) and [gear](/equipment)
 
 We are just getting started, and are currently building our core infrastructure. If you are interested in helping us get started, [let us know you are interested](/join)!
