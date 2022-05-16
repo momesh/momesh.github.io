@@ -27,7 +27,7 @@ Node `0123` implies router IP `10.69.1.23`, where `1234` has `10.69.12.34`. This
 
 ## Internal Network: `10.96.0.0/16`
 
-In each [node's](/docs/architecture/nodes) router, we compute a `/26` (64 IPs) out of `10.96.0.0/16` based on the node number. This subnet is used to distribute DHCP IPs to devices behind that node (i.e. your home router, PTP routers, neighbors routers via ethernet).
+In each [node's](/docs/nodes) router, we compute a `/26` (64 IPs) out of `10.96.0.0/16` based on the node number. This subnet is used to distribute DHCP IPs to devices behind that node (i.e. your home router, PTP routers, neighbors routers via ethernet).
 
 ### Router IP Addresses
 
