@@ -1,0 +1,51 @@
+# config.yml
+# netlify CMS configuration
+# Docs: https://www.netlifycms.org/docs/jekyll/
+---
+backend:
+  name: github
+  repo: momesh/momesh.github.io
+  branch: main
+media_folder: 'assets/uploads'
+collections:
+  - name: 'authors'
+    label: 'Authors'
+    folder: '_authors/'
+    create: true
+    editor:
+      preview: false
+    fields:
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'author' }
+      - { label: 'Short Name', name: 'name', widget: 'string' }
+      - { label: 'Display Name', name: 'display_name', widget: 'string' }
+      - { label: 'Bio', name: 'bio', widget: 'hidden' }
+
+  - name: 'status'
+    label: 'Status'
+    editor:
+      preview: false
+    files:
+      - label: 'Status Page'
+        name: 'status'
+        file: 'status/index.md'
+        fields:
+          - { label: 'Body', name: 'body', widget: 'markdown' }
+
+  - name: 'updates'
+    label: 'Status Update'
+    create: true
+    editor:
+      preview: false
+    folder: 'status/_posts/'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string', default: 'post' }
+      - { label: 'Author',
+          name: 'author',
+          widget: 'relation',
+          collection: 'authors',
+          display_fields: [display_name],
+          search_fields: [display_name],
+          value_field: 'name',
+        }
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'post' }
+      - { label: 'Content', name: 'content', widget: 'markdown' }
