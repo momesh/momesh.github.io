@@ -2,11 +2,11 @@
 title: Omnitik 5AC PoE
 layout: equipment
 grand_parent: Equipment
-parent: Mikrotik Hardware
-categories: [ device, mesh ]
+parent: Rooftop
 
 model: Omnitik 5AC PoE
 vendor: Mikrotik
+summary: Access point, mesh router
 msrp: $129
 protocols:
 - 802.11ac

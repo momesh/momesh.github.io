@@ -2,10 +2,11 @@
 layout: equipment
 title: LiteBeam 5AC Gen2
 grand_parent: Equipment
-parent: Ubiquiti Hardware
+parent: Rooftop
 
 model: LiteBeam 5AC Gen2
 vendor: Ubiquiti
+summary: Point-to-point Airmax CPE router
 msrp: $65
 protocols:
 - airmax

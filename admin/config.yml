@@ -60,6 +60,7 @@ collections:
       - { label: 'Vendor', name: 'vendor', widget: 'string', hint: "Mikrotik" }
       - { label: 'Model', name: 'model', widget: 'string', hint: "Omnitik 5AC PoE" }
       - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'equipment' }
+      - { label: 'Summary', name: 'summary', widget: 'string', hint: "short summary of use" }
       - { label: 'MSRP', name: 'msrp', required: false, hint: "$USD", widget: 'number' }
       - { label: 'Protocols', name: 'protocols', required: false, hint: "802.11ac", widget: 'list' }
       - { label: 'Features', name: 'features', required: false, hint: "router, mesh", widget: 'list' }

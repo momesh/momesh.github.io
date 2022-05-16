@@ -2,11 +2,11 @@
 layout: equipment
 title: GigaBeam Plus
 grand_parent: Equipment
-parent: Ubiquiti Hardware
-
+parent: Rooftop
 
 model: GigaBeam Plus
 vendor: Ubiquiti
+summary: 60GHz point to point router for 1gbps+
 msrp: $179/ea $360/link
 protocols:
 - airmax
