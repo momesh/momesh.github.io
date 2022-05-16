@@ -14,7 +14,7 @@ nav_order: 3
 
 We are currently focused on bringing mesh access to the Pinnacle Lake area. Check back soon to see our network grow!
 
-|<a href="/docs/architecture/nodes"><span class="node-active">Nodes</span></a>|<a href="/docs/architecture/hubs"><span class="hub-active">Hubs</span></a>|<span class="node-potential">Potential</span>|
+|<a href="/docs/nodes"><span class="node-active">Nodes</span></a>|<a href="/docs/hubs"><span class="hub-active">Hubs</span></a>|<span class="node-potential">Potential</span>|
 |:----:|:----:|:----:|
 |<span id="active-nodes-total"></span>|<span id="active-hubs-total"></span>|<span id="potential-nodes-total"></span>|
 

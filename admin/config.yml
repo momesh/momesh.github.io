@@ -50,6 +50,18 @@ collections:
       - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'post' }
       - { label: 'Content', name: 'content', widget: 'markdown' }
 
+  - name: 'docs'
+    label: 'Documentation'
+    create: true
+    editor:
+      preview: false
+    folder: '_docs/'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Tags', name: 'tags', required: false, hint: "router, mesh", widget: 'list' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+
+
   - name: 'equipment'
     label: 'Equipment'
     create: true
@@ -57,8 +69,8 @@ collections:
       preview: false
     folder: '_equipment/'
     fields:
-      - { label: 'Vendor', name: 'vendor', widget: 'string', hint: "Mikrotik" }
       - { label: 'Model', name: 'model', widget: 'string', hint: "Omnitik 5AC PoE" }
+      - { label: 'Vendor', name: 'vendor', widget: 'string', hint: "Mikrotik" }
       - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'equipment' }
       - { label: 'Summary', name: 'summary', widget: 'string', hint: "short summary of use" }
       - { label: 'MSRP', name: 'msrp', required: false, hint: "$USD", widget: 'number' }
