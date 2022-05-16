@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Network Overview
-parent: Docs
+parent: Documentation
 tags:
 - architecture
 ---

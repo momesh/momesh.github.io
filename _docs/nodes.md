@@ -1,7 +1,7 @@
 ---
 title: Nodes
-parent: Docs
 nav_order: 1
+parent: Documentation
 layout: docs
 ---
 

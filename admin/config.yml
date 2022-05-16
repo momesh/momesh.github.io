@@ -58,6 +58,8 @@ collections:
     folder: '_docs/'
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'docs' }
+      - { label: 'Parent', name: 'parent', widget: 'hidden', default: 'Documentation' }
       - { label: 'Tags', name: 'tags', required: false, hint: "router, mesh", widget: 'list' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
 

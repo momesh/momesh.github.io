@@ -1,7 +1,7 @@
 ---
 title: Hubs
 layout: docs
-parent: Docs
+parent: Documentation
 ---
 
 # Hubs
