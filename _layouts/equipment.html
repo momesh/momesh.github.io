@@ -1,0 +1,75 @@
+---
+layout: default
+---
+
+<h1>{{page.vendor}} {{ page.model }}</h1>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Vendor</td>
+      <td>{{page.vendor}}</td>
+    </tr>
+    <tr>
+      <td>Model</td>
+      <td>{{page.model}}</td>
+    </tr>
+    {% if page.msrp %}
+    <tr>
+      <td>MSRP</td>
+      <td>{{page.msrp}}</td>
+    </tr>
+    {% endif %}
+    <tr>
+      <td>Features</td>
+      <td>
+        {% for t in page.features %}
+        <code class="language-plaintext highlighter-rouge">{{t}}</code>
+        {% endfor %}
+      </td>
+    </tr>
+    <tr>
+      <td>Protocols</td>
+      <td>
+        {% for t in page.protocols %}
+        <code class="language-plaintext highlighter-rouge">{{t}}</code>
+        {% endfor %}
+      </td>
+    </tr>
+    <tr>
+      <td>Frequencies</td>
+      <td>
+        {% for t in page.frequencies %}
+        <code class="language-plaintext highlighter-rouge">{{t}}</code>
+        {% endfor %}
+      </td>
+    </tr>
+    {% if page.range_meters %}
+    <tr>
+      <td>Max Usable Range</td>
+      <td>{{page.range_meters}}m</td>
+    </tr>
+    {% endif %}
+    {% if page.power_req %}
+    <tr>
+      <td>Power</td>
+      <td>{{page.power_req}}</td>
+    </tr>
+    {% endif %}
+    {% if page.vendor_url %}
+    <tr>
+      <td>Vendor URL</td>
+      <td><a href="{{page.vendor_url}}">{{page.vendor}}</a></td>
+    </tr>
+    {% endif %}
+    {% if page.purchase_url %}
+    <tr>
+      <td>Purchase URL</td>
+      <td><a href="{{page.purchase_url}}">recommended purchase link</a>
+      </td>
+    </tr>
+    {% endif %}
+  </tbody>
+</table>
+
+{{ content }}
