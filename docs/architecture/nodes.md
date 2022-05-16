@@ -9,8 +9,8 @@ nav_order: 1
 
 A Node is a participant in our mesh network. A (typical) node consists of the following routers:
 
-- 1x [LiteBeam 5AC Gen2](/equipment/ubiquiti/lbe): Router to connect with nearby [hubs](./hubs)
-- 1x [Omnitik](/equipment/mikrotik/omnitik): Meshes with nearby Omnitiks, serves as access point and power distribution to other devices
+- 1x [LiteBeam 5AC Gen2](/equipment/lbe): Router to connect with nearby [hubs](./hubs)
+- 1x [Omnitik](/equipment/omnitik): Meshes with nearby Omnitiks, serves as access point and power distribution to other devices
 
 These devices are powered by a single ethernet cable running from inside, up to the routers on the roof. An power-over-ethernet injector is plugged into your mains outlet indoors to provide power to the roof. Your home wifi is then plugged into the ethernet.
 

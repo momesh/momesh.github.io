@@ -1,0 +1,74 @@
+# config.yml
+# netlify CMS configuration
+# Docs: https://www.netlifycms.org/docs/jekyll/
+---
+backend:
+  name: github
+  repo: momesh/momesh.github.io
+  branch: main
+media_folder: 'assets/uploads'
+collections:
+  - name: 'authors'
+    label: 'Authors'
+    folder: '_authors/'
+    create: true
+    editor:
+      preview: false
+    fields:
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'author' }
+      - { label: 'Short Name', name: 'name', widget: 'string' }
+      - { label: 'Display Name', name: 'display_name', widget: 'string' }
+      - { label: 'Bio', name: 'bio', widget: 'hidden' }
+
+  - name: 'status'
+    label: 'Status'
+    editor:
+      preview: false
+    files:
+      - label: 'Status Page'
+        name: 'status'
+        file: 'status/index.md'
+        fields:
+          - { label: 'Body', name: 'body', widget: 'markdown' }
+
+  - name: 'updates'
+    label: 'Status Update'
+    create: true
+    editor:
+      preview: false
+    folder: 'status/_posts/'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string', default: 'post' }
+      - { label: 'Author',
+          name: 'author',
+          widget: 'relation',
+          collection: 'authors',
+          display_fields: [display_name],
+          search_fields: [display_name],
+          value_field: 'name',
+        }
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'post' }
+      - { label: 'Content', name: 'content', widget: 'markdown' }
+
+  - name: 'equipment'
+    label: 'Equipment'
+    create: true
+    editor:
+      preview: false
+    folder: '_equipment/'
+    fields:
+      - { label: 'Vendor', name: 'vendor', widget: 'string', hint: "Mikrotik" }
+      - { label: 'Model', name: 'model', widget: 'string', hint: "Omnitik 5AC PoE" }
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'equipment' }
+      - { label: 'Summary', name: 'summary', widget: 'string', hint: "short summary of use" }
+      - { label: 'MSRP', name: 'msrp', required: false, hint: "$USD", widget: 'number' }
+      - { label: 'Protocols', name: 'protocols', required: false, hint: "802.11ac", widget: 'list' }
+      - { label: 'Features', name: 'features', required: false, hint: "router, mesh", widget: 'list' }
+      - { label: 'Frequencies', name: 'frequencies', required: false, hint: "60GHz",  widget: 'list' }
+      - { label: 'Range in Meters', name: 'range_meters', required: false, hint: "400", widget: 'number' }
+      - { label: 'Power Requirements', name: 'power_req', required: false, hint: "28v", widget: 'string' }
+      - { label: 'Vendor URL', name: 'vendor_url', required: false, hint: "link to vendor site", widget: 'string' }
+      - { label: 'Purchase URL', name: 'purchase_url', required: false, hint: "link to baltic networks for purchase", widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+
+
