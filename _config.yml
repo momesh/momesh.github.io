@@ -42,6 +42,9 @@ collections:
   equipment:
     permalink: "/:collection/:path"
     output: true
+  updates:
+    permalink: "/:collection/:path"
+    output: true
 
 xxxx:
   # see assets/js/zzzz-search-data.json
@@ -49,4 +52,6 @@ xxxx:
     docs:
       search_exclude: false
     equipment:
+      search_exclude: false
+    updates:
       search_exclude: false

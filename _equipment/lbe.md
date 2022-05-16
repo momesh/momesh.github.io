@@ -22,5 +22,4 @@ vendor_url: https://store.ui.com/collections/operator-airmax-devices/products/li
 purchase_url: https://www.balticnetworks.com/ubiquiti-airmax-litebeam-gen-2-5ac-2-4-5ghz-23dbi-cpe-us
 ---
 
-Used to connect to an airmax access point like the [LAP-120](/equipment/lap120). Used as the primary uplink in most [nodes](/docs/nodes).
-
+Used to connect to an airmax access point like the [LAP-120](/equipment/lap120). Used as the primary uplink in most [nodes](/docs/nodes). Also known as LBE for short.

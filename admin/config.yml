@@ -36,9 +36,9 @@ collections:
     create: true
     editor:
       preview: false
-    folder: 'status/_posts/'
+    folder: '_updates/'
     fields:
-      - { label: 'Title', name: 'title', widget: 'string', default: 'post' }
+      - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Author',
           name: 'author',
           widget: 'relation',
@@ -47,7 +47,8 @@ collections:
           search_fields: [display_name],
           value_field: 'name',
         }
-      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'post' }
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'update' }
+      - { label: 'Parent', name: 'parent', widget: 'hidden', default: 'Status' }
       - { label: 'Content', name: 'content', widget: 'markdown' }
 
   - name: 'docs'
