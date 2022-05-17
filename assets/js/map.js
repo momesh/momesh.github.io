@@ -5,43 +5,63 @@ var groupFeaturesBy = function (xs, keyFn) {
   }, {});
 };
 
-var target = 'momesh-map';
+var target = 'momesh-map'; // the target div for the map
+
 var nodeCompositeKey = function (feature) {
   return feature.get('status') + "-" + feature.get('type');
 };
 
-var nodeHubStyle = new ol.style.Circle({
+var nodeHubCircle = new ol.style.Circle({
   radius: 5,
   fill: new ol.style.Fill({color: 'magenta'}),
   stroke: null,
 });
 
-var nodeStyle = new ol.style.Circle({
+var nodeCircle = new ol.style.Circle({
   radius: 5,
   fill: new ol.style.Fill({color: 'blue'}),
   stroke: null,
 });
 
-var nodePotentialStyle = new ol.style.Circle({
+var nodePotentialCircle = new ol.style.Circle({
   radius: 5,
   fill: new ol.style.Fill({color: 'gray'}),
   stroke: null,
 });
 
-var linkPTPStyle = new ol.style.Stroke({color: 'green', width: 3});
+
+var createNodeLabel = function (text) {
+  var textStyle = new ol.style.Text({
+    font: '12px Calibri,sans-serif',
+    overflow: true,
+    fill: new ol.style.Fill({
+      color: '#000',
+    }),
+    offsetY: -15,
+    text: text,
+    stroke: new ol.style.Stroke({
+      color: '#fff',
+      width: 3,
+    }),
+  });
+
+  return textStyle;
+};
+
+var datalinkPTPStroke = new ol.style.Stroke({color: 'rgba(0, 255, 0, 0.4)', width: 5});
 
 var styles = {
   'Point': new ol.style.Style({
-    image: nodeHubStyle,
+    image: nodeHubCircle,
   }),
   'LineString': new ol.style.Style({
-    stroke: linkPTPStyle,
+    stroke: datalinkPTPStroke,
   }),
   'MultiLineString': new ol.style.Style({
-    stroke: linkPTPStyle,
+    stroke: datalinkPTPStroke,
   }),
   'MultiPoint': new ol.style.Style({
-    image: nodeHubStyle,
+    image: nodeHubCircle,
   }),
   'MultiPolygon': new ol.style.Style({
     stroke: new ol.style.Stroke({
@@ -89,43 +109,46 @@ var styles = {
 };
 
 var styleFunction = function (feature) {
-  // TODO: handle other features other than points
-  // TODO: handle override marker-color per feature
+  // TODO: handle override marker-color per feature?
   // var color = feature.get('marker-color');
-  var nn = feature.get('name');
-  var t = feature.get('type');
-  var s = feature.get('status');
-  if (s == 'potential') {
-    return new ol.style.Style({image: nodePotentialStyle});
-  }
-  switch (t) {
-    case 'node':
-      return new ol.style.Style({image: nodeStyle});
-    case 'hub':
-      return new ol.style.Style({image: nodeHubStyle});
+  //var nn = feature.get('nn');     // network number, only if node is active
+  var t = feature.get('type');    // node, hub, datalink
+  var s = feature.get('status');  // active, potential
+  //var site = feature.get('site'); // site identifier
+  switch (s) {
+    case 'potential':
+      return new ol.style.Style({image: nodePotentialCircle});
+    default:
+      switch (t) {
+        case 'node':
+          return new ol.style.Style({image: nodeCircle});
+        case 'hub':
+          return new ol.style.Style({image: nodeHubCircle});
+        case 'datalink':
+          return new ol.style.Style({style: datalinkPTPStroke});
+      }
   }
   return styles[feature.getGeometry().getType()];
 };
 
-function onMoveEnd(evt) {
+function onMapMove(evt) {
+  // TODO: figure out how many nodes are visible in viewport?
   var map = evt.map;
-  console.log("move end:", map);
 }
+
+var setElementIdHTML = function (id, val) {
+  document.getElementById(id).innerHTML = val;
+};
 
 function onFeaturesLoadEnd(evt) {
   // update legend based on evt.features properties
   // group features by properties.get('type') and 'status'
   // count active hubs, nodes, planned
   var buckets = groupFeaturesBy(evt.features, nodeCompositeKey);
-  console.log("features end", buckets);
   var elems = {
     'potential-nodes-total': 'potential-node',
     'active-nodes-total': 'active-node',
     'active-hubs-total': 'active-hub',
-  };
-  var setElementIdHTML = function (id, val) {
-    console.log(id);
-    document.getElementById(id).innerHTML = val;
   };
   var getValue = function (coll, key) {
     if (key in coll) {
@@ -167,8 +190,69 @@ var map = new ol.Map({
   })
 });
 
-map.on('moveend', onMoveEnd);
+map.on('moveend', onMapMove);
 
 console.log("created map", map);
-//map.layers[1].addListener('featuresloadend', function (x) {
-//});
+
+// a normal select interaction to handle clicking on a feature
+var getFeatureLabelText = function (feature) {
+  let name = feature.get('name');
+  let status = feature.get('status');
+  //let site = feature.get('site');
+  let nn = feature.get('nn');
+  let type = feature.get('type');
+  // site 22 nn 43 -> s22n43
+  if (status == 'potential') {
+    return status + " " + type;
+  }
+  if (name) {
+    return name;
+  }
+  if (type && nn) {
+    return type + " " + nn;
+  }
+  return '';
+};
+
+var select = new ol.interaction.Select({
+  style: function (feature) {
+    // when selecting a feature, annotate it with its name
+    let ogStyle = styleFunction(feature);
+    let text = getFeatureLabelText(feature);
+    ogStyle.setText(createNodeLabel(text));
+    return ogStyle;
+  },
+});
+
+map.addInteraction(select);
+
+let selectedFeatures = select.getFeatures();
+selectedFeatures.on(['add', 'remove', 'change'], function () {
+  const features = selectedFeatures.getArray();
+  //TODO: update query params with selection
+  let params = new URLSearchParams();
+  // multiple selections will be encoded with a (',') between them (%2C in query params)
+  params.set('selected', features.map(function (x) {return x.get('nn');}));
+
+  // change the current history to reflect the selection without triggering a refresh
+  if (features.length == 0) {
+    window.history.replaceState(null, null, '?');
+    return;
+  }
+  window.history.replaceState(null, null, '?' + params.toString());
+
+  //let gb = groupFeaturesBy(features, nodeCompositeKey);
+  //console.log("selected:", gb);
+});
+
+// on page load, restore select features that are indicated via query params
+let params = new URLSearchParams(window.location.search);
+let selRaw = params.get('selected');
+if (selRaw) {
+  let ids = selRaw.split(',');
+  // TODO: handle empty ids
+  for (idx in ids) {
+    let nn = ids[idx];
+    console.log("TODO! need to mark nn", nn, "selected in map on page load");
+  }
+}

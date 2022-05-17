@@ -18,8 +18,7 @@ We are currently focused on bringing mesh access to the Pinnacle Lake area. Chec
 |:----:|:----:|:----:|
 |<span id="active-nodes-total"></span>|<span id="active-hubs-total"></span>|<span id="potential-nodes-total"></span>|
 
-
-
 <div id="momesh-map" class="map"></div>
+<div id="map-info" class="map-info"></div>
 
 <script src="/assets/js/map.js"></script>

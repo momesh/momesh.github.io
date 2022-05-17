@@ -7,7 +7,9 @@
         "marker-color": "#dc8add",
         "marker-size": "medium",
         "marker-symbol": "",
-        "name": "nn1",
+        "name": "",
+        "nn": "1",
+        "site": "1",
         "type": "hub",
         "status": "active"
       },
@@ -25,7 +27,9 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "name": "nn4",
+        "name": "",
+        "nn": "4",
+        "site": "3",
         "type": "node",
         "status": "potential"
       },
@@ -43,7 +47,9 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "name": "nn2",
+        "name": "",
+        "nn": "",
+        "site": "2",
         "type": "node",
         "status": "potential"
       },
@@ -61,7 +67,9 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "name": "nn3",
+        "name": "",
+        "nn": "",
+        "site": "2",
         "type": "node",
         "status": "potential"
       },
