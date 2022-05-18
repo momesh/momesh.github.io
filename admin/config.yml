@@ -11,8 +11,10 @@ collections:
   - name: 'authors'
     label: 'Authors'
     label_singular: 'Author'
+    slug: '{{ name | slugify }}'
     folder: '_authors/'
     create: true
+    delete: false
     editor:
       preview: false
     fields:
@@ -36,11 +38,13 @@ collections:
     label: 'Status Updates'
     label_singular: 'Update'
     create: true
+    delete: false
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     editor:
       preview: true
     folder: '_updates/'
     fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Title', name: 'title', widget: 'string', default: 'Update' }
       - { label: 'Author',
           name: 'author',
           widget: 'relation',
@@ -50,13 +54,19 @@ collections:
           value_field: 'name',
         }
       - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'update' }
+      - { label: 'Created', name: 'date', widget: 'datetime' }
+      - { label: 'Level', name: 'level', widget: 'select', default: 'info', options: ["info", "minor", "important", "outage"] }
+      - { label: 'Outage Start', name: 'outage_begin', widget: 'datetime', required: false, default: '' }
+      - { label: 'Outage End', name: 'outage_end', widget: 'datetime', required: false, default: '' }
       - { label: 'Parent', name: 'parent', widget: 'hidden', default: 'Status' }
       - { label: 'Content', name: 'body', widget: 'markdown' }
 
   - name: 'docs'
     label: 'Documentation'
     label_singular: 'Page'
+    slug: '{{ title | slugify }}'
     create: true
+    delete: true
     editor:
       preview: true
     folder: '_docs/'
@@ -64,14 +74,17 @@ collections:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'docs' }
       - { label: 'Parent', name: 'parent', widget: 'hidden', default: 'Documentation' }
-      - { label: 'Tags', name: 'tags', required: false, hint: "router, mesh", widget: 'list' }
+      - { label: 'Categories', name: 'categories', widget: 'select', multiple: true, options: ['How To Guides', 'Reference', 'Explanation'], required: false }
+      - { label: 'Tags', name: 'tags', required: false, widget: 'select', multiple: true, options: ['network', 'services', 'platform', 'security'] }
       - { label: 'Body', name: 'body', widget: 'markdown' }
 
 
   - name: 'equipment'
     label: 'Equipment'
     label_singular: 'Device'
+    slug: '{{ vendor | slugify }}-{{ model | slugify }}'
     create: true
+    delete: false
     editor:
       preview: true
     folder: '_equipment/'
@@ -81,9 +94,9 @@ collections:
       - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'equipment' }
       - { label: 'Summary', name: 'summary', widget: 'string', hint: "short summary of use" }
       - { label: 'MSRP', name: 'msrp', required: false, hint: "$USD", widget: 'number' }
-      - { label: 'Protocols', name: 'protocols', required: false, hint: "802.11ac", widget: 'list' }
-      - { label: 'Features', name: 'features', required: false, hint: "router, mesh", widget: 'list' }
-      - { label: 'Frequencies', name: 'frequencies', required: false, hint: "60GHz",  widget: 'list' }
+      - { label: 'Features', name: 'features', required: false, widget: 'select', multiple: true, options: ['router', 'mesh', 'access point', 'PTP', 'PTMP', 'indoor', 'outdoor', 'sector antenna', 'CPE'] }
+      - { label: 'Protocols', name: 'protocols', required: false, widget: 'select', multiple: true, options: ['802.11ac', '802.11ax', 'terragraph'] }
+      - { label: 'Frequencies', name: 'frequencies', required: false, widget: 'select', multiple: true, options: ['2.4GHz', '5GHz', '60GHz', '11GHz', '24GHz', '6GHz'] }
       - { label: 'Range in Meters', name: 'range_meters', required: false, hint: "400", widget: 'number' }
       - { label: 'Power Requirements', name: 'power_req', required: false, hint: "28v", widget: 'string' }
       - { label: 'Vendor URL', name: 'vendor_url', required: false, hint: "link to vendor site", widget: 'string' }
