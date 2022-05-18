@@ -27,7 +27,7 @@
         "marker-symbol": "",
         "name": "nn4",
         "type": "node",
-        "status": "potential"
+        "status": "potential-unmarked"
       },
       "geometry": {
         "type": "Point",

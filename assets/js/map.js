@@ -95,15 +95,26 @@ var styleFunction = function (feature) {
   var nn = feature.get('name');
   var t = feature.get('type');
   var s = feature.get('status');
-  if (s == 'potential') {
-    return new ol.style.Style({image: nodePotentialStyle});
+  switch (s) {
+    // require known statuses to be listed on map
+    case 'potential':
+      return new ol.style.Style({image: nodePotentialStyle});
+    case 'active': // require these statuses, otherwise dont show anything
+      // fallthrough
+      break;
+    default:
+      // any not explicitly listed status does not display
+      return;
   }
+
   switch (t) {
     case 'node':
       return new ol.style.Style({image: nodeStyle});
     case 'hub':
       return new ol.style.Style({image: nodeHubStyle});
   }
+
+  // fallback to render any other geometry not explicitly handled prior
   return styles[feature.getGeometry().getType()];
 };
 
