@@ -10,6 +10,7 @@ media_folder: 'assets/uploads'
 collections:
   - name: 'authors'
     label: 'Authors'
+    label_singular: 'Author'
     folder: '_authors/'
     create: true
     editor:
@@ -18,24 +19,25 @@ collections:
       - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'author' }
       - { label: 'Short Name', name: 'name', widget: 'string' }
       - { label: 'Display Name', name: 'display_name', widget: 'string' }
-      - { label: 'Bio', name: 'bio', widget: 'hidden' }
+      - { label: 'Bio', name: 'body', widget: 'hidden' }
 
   - name: 'status'
-    label: 'Status'
+    label: 'Status Summary'
     editor:
-      preview: false
+      preview: true
     files:
-      - label: 'Status Page'
+      - label: 'Summary'
         name: 'status'
-        file: 'status/index.md'
+        file: 'status.md'
         fields:
           - { label: 'Body', name: 'body', widget: 'markdown' }
 
   - name: 'updates'
-    label: 'Status Update'
+    label: 'Status Updates'
+    label_singular: 'Update'
     create: true
     editor:
-      preview: false
+      preview: true
     folder: '_updates/'
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
@@ -49,13 +51,14 @@ collections:
         }
       - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'update' }
       - { label: 'Parent', name: 'parent', widget: 'hidden', default: 'Status' }
-      - { label: 'Content', name: 'content', widget: 'markdown' }
+      - { label: 'Content', name: 'body', widget: 'markdown' }
 
   - name: 'docs'
     label: 'Documentation'
+    label_singular: 'Page'
     create: true
     editor:
-      preview: false
+      preview: true
     folder: '_docs/'
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
@@ -67,9 +70,10 @@ collections:
 
   - name: 'equipment'
     label: 'Equipment'
+    label_singular: 'Device'
     create: true
     editor:
-      preview: false
+      preview: true
     folder: '_equipment/'
     fields:
       - { label: 'Model', name: 'model', widget: 'string', hint: "Omnitik 5AC PoE" }
