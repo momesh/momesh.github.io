@@ -110,7 +110,7 @@ collections:
   - name: 'nodes'
     label: 'Nodes'
     label_singular: 'Node'
-    slug: '{{ id | slugify }}'
+    slug: '{{ id }}'
     format: 'yaml-frontmatter'
     create: true
     delete: false
