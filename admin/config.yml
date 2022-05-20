@@ -103,4 +103,24 @@ collections:
       - { label: 'Purchase URL', name: 'purchase_url', required: false, hint: "link to baltic networks for purchase", widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
 
+  - name: 'nodes'
+    label: 'Nodes'
+    label_singular: 'Node'
+    slug: '{{ id | slugify }}'
+    create: true
+    delete: false
+    editor:
+      preview: false
+    folder: '_data/nodes/'
+    fields:
+      - { label: 'ID', name: 'id', widget: 'number', value_type: 'int', hint: "stable identifier and slug" }
+      - { label: 'Installation Type', name: 'type', widget: 'select', multiple: false, options: ['node', 'hub', 'core'], default: 'node' }
+      - { label: 'Friendly Name', name: 'name', widget: 'string', required: false, hint: 'friendly name' }
+      - { label: 'Network Number', name: 'network_number', widget: 'number', value_type: 'int', hint: "network number, only if assigned", required: false }
+      - { label: 'Status', name: 'status', widget: 'select', multiple: false, options: ['potential', 'active', 'decommissioned', 'unreachable', 'abandoned'], default: 'potential' }
+      - { label: 'Location', name: 'location', widget: 'map', type: 'Point', default: '{"type":"Point","coordinates":[-91.4207926,38.8290306]}' }
+      - { label: 'Related Nodes', name: 'related_nodes', widget: 'relation', collection: 'nodes', display_fields: ['id', 'type', 'network_number', 'name'], search_fields: ['id', 'network_number', 'name'], value_field: 'id', multiple: true, required: false }
+      - { label: 'Hidden', name: 'hidden', widget: 'boolean', default: false, hint: "Hide from map?" }
+      - { label: 'Public Description', name: 'body', widget: 'markdown', required: false }
+
 
