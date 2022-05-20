@@ -1,6 +1,14 @@
+---
+# vi: ft=js
+---
 /*
  * sourced with modifications from https://codepen.io/billimarie/pen/mJLeBY
  */
+
+// visible nodes in the network, any type
+{% assign nodes = site.data.nodes | where: 'hidden', false |jsonify %}
+var nodes = {{nodes}};
+
 var mouseX = 0,
   mouseY = 0,
   windowHalfX = window.innerWidth / 2,
@@ -17,6 +25,23 @@ window.addEventListener('DOMContentLoaded', (_) => {
   animate();
 });
 
+
+// converts a world coordinate tuple (i.e. geojson) into [-1..1,-1..1,-1..1] space
+// i.e. normalizes GPS into camera's coordinate space
+// TODO: this doesnt work right
+function worldToScreenVector(x, y, z) {
+  var vector = new THREE.Vector3();
+  vector.set(x,y,z);
+  console.log(vector);
+  // map to normalized device coordinate (NDC) space
+  vector.project( camera );
+  // map to 2D screen space
+  vector.x = (   vector.x + 1 ) * (windowHalfX * 1.0);
+  vector.y = ( - vector.y + 1 ) * (windowHalfY * 1.0);
+  vector.z = 0;
+  return vector;
+}
+
 function init() {
 
   var container,
@@ -29,7 +54,7 @@ function init() {
 
   scene = new THREE.Scene();
 
-  renderer = new THREE.CanvasRenderer({alpha: true}); // gradient; this can be swapped for WebGLRenderer
+  renderer = new THREE.WebGLRenderer({alpha: true}); // gradient; this can be swapped for WebGLRenderer
   renderer.setSize(container.offsetWidth + 100, container.offsetHeight + 100);
   renderer.domElement.classList.add('mesh-animation');
   container.appendChild(renderer.domElement);
@@ -44,28 +69,40 @@ function init() {
 
   // particles
   var PI2 = Math.PI * 2;
-  var material = new THREE.SpriteCanvasMaterial({
+  var material = new THREE.SpriteMaterial({
     color: 0xffffff,
-    program: function (context) {
-      context.beginPath();
-      context.arc(0, 0, 0.5, 0, PI2, true);
-      context.fill();
-    }
+    // TODO: fix how we render points
+    // - include some coverage representation
+    //program: function (context) {
+    //  context.beginPath();
+    //  context.arc(0, 0, 0.5, 0, PI2, true);
+    //  context.fill();
+    //}
   });
 
-  var geometry = new THREE.Geometry();
 
-  for (var i = 0; i < 100; i++) {
+  var points = [];
+  var particle;
+  for (var i = 0; i < nodes.length; i++) {
+    var node = nodes[i];
+    var parsed_location = JSON.parse(node.location);
     particle = new THREE.Sprite(material);
-    particle.position.x = Math.random() * 2 - 1;
-    particle.position.y = Math.random() * 2 - 1;
-    particle.position.z = Math.random() * 2 - 1;
+    particle.position = worldToScreenVector(parsed_location.coordinates[0], parsed_location.coordinates[1], 0)
+    particle.position.z = (Math.random() * 2 - 1) * 0.1; // random z variation
+    console.log(particle.position, parsed_location);
+    // random layout
+    //particle.position.x = Math.random() * 2 - 1;
+    //particle.position.y = Math.random() * 2 - 1;
+    //particle.position.z = Math.random() * 2 - 1;
     particle.position.normalize();
     particle.position.multiplyScalar(Math.random() * 10 + 450);
     particle.scale.x = particle.scale.y = 10;
     scene.add(particle);
-    geometry.vertices.push(particle.position);
+    points.push(particle.position);
   }
+
+  //var geometry = new THREE.Geometry(); // killed in r125
+  var geometry = new THREE.BufferGeometry().setFromPoints(points);
 
   // lines
   var line = new THREE.Line(geometry, new THREE.LineBasicMaterial({color: 0xffffff, opacity: 0.5}));
