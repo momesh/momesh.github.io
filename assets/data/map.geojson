@@ -1,77 +1,29 @@
+---
+# geojson feature collection generated from _data/nodes/
+permalink: /assets/data/map.geojson
+---
 {
   "type": "FeatureCollection",
   "features": [
+{%- assign i = 0 -%}
+{%- assign visible_nodes = site.data.nodes | where: 'hidden', false -%}
+{%- assign len = visible_nodes.size -%}
+{%- for node in visible_nodes -%}
+  {%- unless i == 0 -%},{%- endunless -%}
+  {%- unless node.hidden %}
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#dc8add",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "nn1",
-        "type": "hub",
-        "status": "active"
+        "id": {{node.id | jsonify}},
+        "network_number": {{node.network_number | jsonify}},
+        "name": {{node.name | jsonify}},
+        "type": {{node.type | jsonify}},
+        "status": {{node.status | jsonify}}
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -91.4151120185852,
-          38.832152730255395
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "nn4",
-        "type": "node",
-        "status": "potential-unmarked"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -91.42257928848267,
-          38.834542968109574
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "nn2",
-        "type": "node",
-        "status": "potential"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -91.4181911945343,
-          38.83348157869065
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "nn3",
-        "type": "node",
-        "status": "potential"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -91.41958594322205,
-          38.83348157869065
-        ]
-      }
+      "geometry": {{node.location}}
     }
+  {%- endunless -%}
+  {%- assign i = i | plus: 1 -%}
+{%- endfor %}
   ]
 }

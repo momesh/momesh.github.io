@@ -23,3 +23,9 @@ Server address: http://127.0.0.1:4000
 Any files edited will trigger a live reload in your browser.
 
 Make a Pull Request with your changes
+
+### Via CMS
+
+You need a [Github](github.com) account to make changes to this website via CMS.
+
+Admin interface: [/admin](/admin)

@@ -111,7 +111,8 @@ collections:
     label: 'Nodes'
     label_singular: 'Node'
     slug: '{{ id }}'
-    format: 'yaml-frontmatter'
+    format: 'yaml'
+    extension: 'yaml'
     create: true
     delete: false
     editor:

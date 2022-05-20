@@ -46,9 +46,13 @@ collections:
   updates:
     permalink: "/:collection/:path"
     output: true
+  nodes:
+    permalink: "/:collection/:path"
+    output: false # we dont want to render these
 
 xxxx:
   # see assets/js/zzzz-search-data.json
+  # collections listed here are explicitly indexed by the search tool
   collections:
     docs:
       search_exclude: false
