@@ -1,3 +1,7 @@
+/* TODO:
+ * - support angular coverage of sector aps
+ * - support toggling coverage on/off, highlight node coverage on hover
+ */
 var groupFeaturesBy = function (xs, keyFn) {
   return xs.reduce(function (rv, x) {
     (rv[keyFn(x)] = rv[keyFn(x)] || []).push(x);
@@ -250,5 +254,3 @@ var map = new ol.Map({
 map.on('moveend', onMoveEnd);
 
 console.log("created map", map);
-//map.layers[1].addListener('featuresloadend', function (x) {
-//});
