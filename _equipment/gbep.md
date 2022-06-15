@@ -1,8 +1,7 @@
 ---
-layout: equipment
 title: GigaBeam Plus
-grand_parent: Equipment
-parent: Rooftop
+layout: equipment
+parent: Equipment
 
 model: GigaBeam Plus
 vendor: Ubiquiti
