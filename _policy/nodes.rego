@@ -8,15 +8,14 @@ allowed_types := {"hub", "node"}
 
 allowed_statuses := {"active", "hidden"}
 
+# TODO: make sure network_number is valid and unique if present
+
 node_schema_valid {
 	input.type in allowed_types
 	input.status in allowed_statuses
 
 	# TODO: check node number is unique in set of all nodes?
 	input.id > 0
-
-  # TODO: make sure network_number is valid?
-  # input.status == "active" && input.network_number > 0
 }
 
 node_location_geojson_valid {
