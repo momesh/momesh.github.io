@@ -33,3 +33,10 @@ Admin interface: [/admin](/admin)
 ## Policies and OPA
 
 There are OPA policies in `_policy/` to keep our configs tidy and valid. They run on each commit via Github Actions.
+
+# XXX DO NOT COMMIT Notes XXX
+
+- Make validation run against only specified files
+- setup github actions to run pre-commit run -a for all commits
+  - install opa
+  - install conftest

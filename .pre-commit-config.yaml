@@ -9,15 +9,20 @@ repos:
     -   id: check-yaml
     -   id: check-added-large-files
 
-# run OPA rego linters
+# validate policies
+# TODO: just use https://github.com/anderseknert/pre-commit-opa/blob/master/.pre-commit-hooks.yaml directly for clarity?
 - repo: https://github.com/anderseknert/pre-commit-opa
   rev: v1.5.1
   hooks:
   - id: opa-fmt
-    args: ['_policy/']
+    args: ['-w', '_policy/']
   - id: opa-check
-    args: ['_policy/']
+    args: ['--strict', '_policy/']
   - id: opa-test
     args: ['_policy/']
-    #- id: conftest-test
-    #- id: conftest-verify
+  - id: conftest-verify
+    args: ['-p', '_policy/']
+  - id: conftest-test
+    args: ['--all-namespaces', '-p', '_policy/']
+    exclude: assets/
+    files: (\.yml|\.yaml|\.json|\.ini|\.toml|\.conf|\.hcl|\.jsonnet|Dockerfile)$

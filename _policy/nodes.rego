@@ -38,3 +38,15 @@ allow {
 	node_schema_valid
 	node_location_geojson_valid
 }
+
+violation[msg] {
+	input.type in allowed_types
+	not node_schema_valid
+	msg := "node schema is not valid"
+}
+
+violation[msg] {
+	input.type in allowed_types
+	not node_location_geojson_valid
+	msg := "location field is not a geojson point"
+}
