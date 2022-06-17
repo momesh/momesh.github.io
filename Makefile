@@ -10,7 +10,7 @@ assets/data/map.geojson:
 
 .bundle:
 	bundle install --path .bundle
-	# TODO: openlayers source: https://github.com/openlayers/openlayers/releases/download/v6.14.1/6.14.1-dist.zip 
+	# TODO: openlayers source: https://github.com/openlayers/openlayers/releases/download/v6.14.1/6.14.1-dist.zip
 
 .PHONY: clean
 clean: .bundle

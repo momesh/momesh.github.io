@@ -128,5 +128,3 @@ collections:
       - { label: 'Related Nodes', name: 'related_nodes', widget: 'relation', collection: 'nodes', display_fields: ['id', 'type', 'network_number', 'name'], search_fields: ['id', 'network_number', 'name'], value_field: 'id', multiple: true, required: false }
       - { label: 'Hidden', name: 'hidden', widget: 'boolean', default: false, hint: "Hide from map?" }
       - { label: 'Public Description', name: 'body', widget: 'markdown', required: false }
-
-
