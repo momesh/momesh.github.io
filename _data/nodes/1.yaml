@@ -5,4 +5,3 @@ network_number: 1
 status: active
 location: '{"type":"Point","coordinates":[-91.4149615,38.8324372]}'
 hidden: false
----

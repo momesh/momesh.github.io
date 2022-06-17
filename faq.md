@@ -39,13 +39,13 @@ nav_order: 2
 Below are just a few of the reasons to join and support MOMesh:
 
 -   We are building an infrastructure commons that is accessible to everyone
--   We are a neutral network that does not block or discriminate content or throttle data  
--   We do not collect personal data  
+-   We are a neutral network that does not block or discriminate content or throttle data
+-   We do not collect personal data
 -   We’re committed to bridging the Digital Divide by connecting underserved communities in Missouri
 -   We are building a resilient emergency community network
--   We are decentralized, with no single point of failure as an organization or network  
--   We believe in building community and supporting highly localized websites and services  
--   We offer public wi-fi hotspots across the network 
+-   We are decentralized, with no single point of failure as an organization or network
+-   We believe in building community and supporting highly localized websites and services
+-   We offer public wi-fi hotspots across the network
 -   We allow for fast uploads as well as downloads
 
 
@@ -117,7 +117,7 @@ If you already have an internet connection, you can use Mesh as your backup conn
 
 No.
 
-Your private starlink/DSL/satellite internet is completely firewalled from the Mesh. We do not send any traffic out of your personal internet provider. 
+Your private starlink/DSL/satellite internet is completely firewalled from the Mesh. We do not send any traffic out of your personal internet provider.
 
 ## Getting Connected to the Mesh
 
@@ -159,4 +159,3 @@ You can take a closer look at the [wireless equipment](/equipment) we use to bui
 Absolutely! You can continue to use your existing home router, or indoor mesh system (i.e. Orbi, Google Wifi, etc) with internet service via MOMesh.
 
 Also relevant: [#dualwan](#dualwan)
-
