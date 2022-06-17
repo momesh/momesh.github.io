@@ -13,6 +13,21 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-python@v3
+
+    # https://github.com/open-policy-agent/setup-opa
+    - name: Setup OPA binary
+      uses: open-policy-agent/setup-opa@v1
+      with:
+        version: latest
+
+    - name: Setup Conftest
+      uses: princespaghetti/setup-conftest@v1
+      with:
+        version: 0.30.x
+
+    - name: run OPA tests
+      run: opa test _policy/ -v
+
     - uses: pre-commit/action@v3.0.0
       #with:
       #  extra_args: flake8 --all-files
