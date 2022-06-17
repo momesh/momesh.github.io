@@ -6,7 +6,7 @@ default allow = false
 
 allowed_types := {"hub", "node"}
 
-allowed_statuses := {"active", "hidden"}
+allowed_statuses := {"active", "hidden", "potential"}
 
 # TODO: make sure network_number is valid and unique if present
 
