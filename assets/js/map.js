@@ -1,4 +1,8 @@
-/* TODO:
+/* 
+ * Documentation:
+ * - https://openlayers.org/en/latest/apidoc/
+ *
+ * TODO:
  * - support angular coverage of sector aps
  * - support toggling coverage on/off, highlight node coverage on hover
  */
