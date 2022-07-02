@@ -1,7 +1,7 @@
 ---
 id: 1
 type: hub
-network_number: 1
+network_number: 10
 status: active
-location: '{"type":"Point","coordinates":[-91.4149615,38.8324372]}'
+location: '{"type":"Point","coordinates":[-91.41491731844593,38.832351289897034]}'
 hidden: false
