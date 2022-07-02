@@ -11,6 +11,14 @@ This repo houses the jekyll website backing [momesh.org](https://momesh.org). It
 - Ruby (2.7+)
 - Ruby Bundler
 
+### Development
+
+`pre-commit` requirements:
+
+- `opa` binary: [openpolicyagent.org](https://www.openpolicyagent.org/docs/latest/#running-opa)
+- `conftest` binary: [conftest.dev](https://www.conftest.dev/)
+
+
 ## Making changes
 
 
