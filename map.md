@@ -12,9 +12,9 @@ nav_order: 3
 
 # Map
 
-We are currently focused on bringing mesh access to the Pinnacle Lake area. Check back soon to see our network grow!
+We are currently focused on bringing mesh access to the Pinnacle Lake area. Check back soon to see our network grow! If you are interested in contributing, please do not hesitate to [join the mesh!](/join)
 
-|<a href="/docs/nodes"><span class="node-active">Nodes</span></a>|<a href="/docs/hubs"><span class="hub-active">Hubs</span></a>|<span class="node-potential">Potential</span>|
+|<a href="/docs/nodes"><span class="node-active">Active Nodes</span></a>|<a href="/docs/hubs"><span class="hub-active">Hubs</span></a>|<span class="node-potential">Potential Installs</span>|
 |:----:|:----:|:----:|
 |<span id="active-nodes-total"></span>|<span id="active-hubs-total"></span>|<span id="potential-nodes-total"></span>|
 
