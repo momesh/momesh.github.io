@@ -1,4 +1,4 @@
-/* 
+/*
  * Documentation:
  * - https://openlayers.org/en/latest/apidoc/
  *
