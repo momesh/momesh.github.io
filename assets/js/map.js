@@ -213,7 +213,7 @@ function onFeaturesLoadEnd(evt) {
   };
 
   setElementIdHTML('potential-nodes-total', getValue(buckets, 'potential-node'));
-  setElementIdHTML('active-nodes-total', getValue(buckets, 'active-node'));
+  setElementIdHTML('active-nodes-total', (getValue(buckets, 'active-node') + getValue(buckets, 'active-hub')));
   setElementIdHTML('active-hubs-total', getValue(buckets, 'active-hub'));
 }
 

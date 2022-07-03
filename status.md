@@ -18,4 +18,3 @@ _no updates_
 <li>{{update.date | date_to_string}} - <a href="{{ update.url }}">{{ update.title }}</a></li>
 {% endfor %}
 </ul>
-

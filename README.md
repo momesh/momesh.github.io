@@ -11,6 +11,14 @@ This repo houses the jekyll website backing [momesh.org](https://momesh.org). It
 - Ruby (2.7+)
 - Ruby Bundler
 
+### Development
+
+`pre-commit` requirements:
+
+- `opa` binary: [openpolicyagent.org](https://www.openpolicyagent.org/docs/latest/#running-opa)
+- `conftest` binary: [conftest.dev](https://www.conftest.dev/)
+
+
 ## Making changes
 
 
@@ -29,3 +37,7 @@ Make a Pull Request with your changes
 You need a [Github](github.com) account to make changes to this website via CMS.
 
 Admin interface: [/admin](/admin)
+
+## Policies and OPA
+
+There are OPA policies in `_policy/` to keep our configs tidy and valid. They run on each commit via Github Actions.

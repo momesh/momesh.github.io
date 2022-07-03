@@ -1,0 +1,28 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+    hooks:
+    -   id: trailing-whitespace
+    -   id: end-of-file-fixer
+    -   id: check-yaml
+    -   id: check-added-large-files
+
+# validate policies
+# TODO: just use https://github.com/anderseknert/pre-commit-opa/blob/master/.pre-commit-hooks.yaml directly for clarity?
+- repo: https://github.com/anderseknert/pre-commit-opa
+  rev: v1.5.1
+  hooks:
+  - id: opa-fmt
+    args: ['-w', '_policy/']
+  - id: opa-check
+    args: ['--strict', '_policy/']
+  - id: opa-test
+    args: ['_policy/']
+  - id: conftest-verify
+    args: ['-p', '_policy/']
+  - id: conftest-test
+    args: ['--all-namespaces', '-p', '_policy/']
+    exclude: assets/
+    files: (\.yml|\.yaml|\.json|\.ini|\.toml|\.conf|\.hcl|\.jsonnet|Dockerfile)$

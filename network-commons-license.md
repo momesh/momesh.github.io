@@ -65,4 +65,3 @@ These general principles apply:
 
 - Adoption of this License can be expressed by individuals or organizations and implies the acceptance of the License's terms and conditions. At any time, any member can revoke this adoption and therefore reclaim their own network devices or equipment. Device ownership is never lost, regardless of where devices are placed.
 - The Network Commons License is distributed under a Creative Commons Non-commercial, Attribution, Share-alike license, which stipulates that derivative works are allowed, but that they may not be used for commercial purposes, must give credit to the Network Commons License, and must be released under these same conditions.
-

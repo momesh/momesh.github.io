@@ -1,8 +1,7 @@
 ---
-layout: equipment
 title: GigaBeam Plus
-grand_parent: Equipment
-parent: Rooftop
+layout: equipment
+parent: Equipment
 
 model: GigaBeam Plus
 vendor: Ubiquiti
@@ -21,4 +20,3 @@ purchase_url: https://www.balticnetworks.com/ubiquiti-airmax-60ghz-full-link-wit
 ---
 
 Used to create a 60GHz 1+Gbps point-to-point link, often to act as backhaul to the rest of the network for submeshes. Gets difficult to align beyond 2km. Beyond that distance, look at using a larger dish, like the Gigabeam Plus LR.
-

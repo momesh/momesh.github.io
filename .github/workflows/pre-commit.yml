@@ -1,0 +1,30 @@
+# https://github.com/pre-commit/action
+# Run pre-commit on every commit
+name: pre-commit
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v3
+
+    # https://github.com/open-policy-agent/setup-opa
+    - name: Setup OPA binary
+      uses: open-policy-agent/setup-opa@v1
+      with:
+        version: 0.40.x
+
+    - name: Setup Conftest
+      uses: princespaghetti/setup-conftest@v1
+      with:
+        version: 0.30.x
+
+    - uses: pre-commit/action@v3.0.0
+      with:
+        extra_args: --all-files

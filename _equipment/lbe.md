@@ -1,8 +1,7 @@
 ---
 layout: equipment
 title: LiteBeam 5AC Gen2
-grand_parent: Equipment
-parent: Rooftop
+parent: Equipment
 
 model: LiteBeam 5AC Gen2
 vendor: Ubiquiti
