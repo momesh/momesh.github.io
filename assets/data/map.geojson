@@ -18,6 +18,11 @@ permalink: /assets/data/map.geojson
         "network_number": {{node.network_number | jsonify}},
         "name": {{node.name | jsonify}},
         "type": {{node.type | jsonify}},
+        {%- if node.type == 'hub' and node.status == 'active' %}
+        "omni_radius_meters": 300,
+        {%- elsif node.type == 'node' and node.status == 'active' %}
+        "omni_radius_meters": 100,
+        {%- endif %}
         "status": {{node.status | jsonify}}
       },
       "geometry": {{node.location}}
