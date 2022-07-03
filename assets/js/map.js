@@ -19,36 +19,37 @@ var nodeCompositeKey = function (feature) {
 };
 
 var nodeHubStyle = new ol.style.Circle({
-  radius: 5,
-  fill: new ol.style.Fill({color: 'magenta'}),
+  radius: 7,
+  fill: new ol.style.Fill({color: "#008DD5"}),
   stroke: null,
 });
 
 var nodeStyle = new ol.style.Circle({
-  radius: 5,
-  fill: new ol.style.Fill({color: 'blue'}),
+  radius: 6,
+  fill: new ol.style.Fill({color: "#008DD5"}),
   stroke: null,
 });
 
 var nodePotentialStyle = new ol.style.Circle({
   radius: 5,
-  fill: new ol.style.Fill({color: 'gray'}),
+  fill: new ol.style.Fill({color: "#373F51"}),
   stroke: null,
 });
 
 var createNodeLabel = function (text) {
   var textStyle = new ol.style.Text({
-    font: '15px Calibri,sans-serif',
+    font: '14px Calibri,sans-serif',
     overflow: true,
     fill: new ol.style.Fill({
       color: '#000',
     }),
     offsetY: -15,
     text: text,
+    /*
     stroke: new ol.style.Stroke({
-      color: '#fff',
-      width: 3,
-    }),
+      color: '#000',
+      width: 1,
+    }),*/
   });
 
   return textStyle;
@@ -109,7 +110,7 @@ var styles = {
       width: 2,
     }),
     fill: new ol.style.Fill({
-      color: 'rgba(255,0,0,0.2)',
+      color: 'rgba(245,100,118,0.2)', // #F56476
     }),
   }),
 };
@@ -150,16 +151,17 @@ var coverageStyleFunction = function (feature) {
         y,
         outerRadius
       );
-      gradient.addColorStop(0, 'rgba(0,0,255,0.5)');
-      gradient.addColorStop(0.6, 'rgba(0,0,255,0.2)');
-      gradient.addColorStop(1, 'rgba(0,0,255,0)');
+      // XXX coverage colors
+      gradient.addColorStop(0.0, 'rgba(57,162,174,0.8)');
+      gradient.addColorStop(0.5, 'rgba(0,0,255,0.2)');
+      gradient.addColorStop(0.7, 'rgba(255,186,8,0.2)');
       ctx.beginPath();
       ctx.arc(x, y, radius, 0, 2 * Math.PI, true);
       ctx.fillStyle = gradient;
       ctx.fill();
 
       ctx.arc(x, y, radius, 0, 2 * Math.PI, true);
-      ctx.strokeStyle = 'rgba(0,0,255,0.4)';
+      ctx.strokeStyle = 'rgba(0,0,255,0.01)';
       ctx.stroke();
     },
   });
@@ -204,6 +206,7 @@ function onMoveEnd(evt) {
 }
 
 function onFeaturesLoadEnd(evt) {
+  /*
   // inject map features for coverage overlay
   // from loaded features and push into computedCoverage
   meshSource.forEachFeature(function (feature) {
@@ -216,6 +219,7 @@ function onFeaturesLoadEnd(evt) {
       computedCoverage.addFeature(newFeature);
     }
   });
+  */
 
   // update legend based on evt.features properties
   // group features by properties.get('type') and 'status'
@@ -259,19 +263,18 @@ var map = new ol.Map({
         interpolate: true,
       })
     }),
+    // coverage bubbles layer
+    // XXX
+    new ol.layer.Vector({
+      source: computedCoverage,
+      style: coverageStyleFunction,
+    }),
+
     // mesh node features layer
     new ol.layer.Vector({
       source: meshSource,
       style: siteStyleFunction,
     }),
-    // coverage bubbles layer
-    // XXX
-    /**
-    new ol.layer.Vector({
-      source: computedCoverage,
-      style: coverageStyleFunction,
-    }),
-    */
   ],
   view: new ol.View({
     center: ol.proj.fromLonLat([-91.4198, 38.8316]),
@@ -302,17 +305,62 @@ var getFeatureLabelText = function (feature) {
   return label;
 };
 
+// given a site feature (node), populate computedCoverage
+// with the features to show coverage
+var populateCoverageLayer = function (feature) {
+  // TODO: handle sectors with angular coverage here - what type of geometry can we use?
+  // https://openlayers.org/en/latest/apidoc/
+
+  // wipe out collection before we start
+  computedCoverage.clear();
+
+  let r = feature.get('omni_radius_meters');
+  //console.log("populate for", feature.get('id'), r);
+  if (feature.get('status') !== "active" || !r) {
+    return;
+  }
+  // only features with a radius property will be rendered as a circle
+  let geo = feature.getGeometry();
+  const newFeature = createMapFeatureCoverage(geo.flatCoordinates, r);
+  computedCoverage.addFeature(newFeature);
+};
+
 var select = new ol.interaction.Select({
   style: function (feature) {
     // when selecting a feature, annotate it with its name
     let ogStyle = siteStyleFunction(feature);
+    if (!ogStyle) {return;}
     let text = getFeatureLabelText(feature);
     ogStyle.setText(createNodeLabel(text));
+    // TODO: figure out how to highlight the site
+    populateCoverageLayer(feature);
     return ogStyle;
   },
 });
 
 map.addInteraction(select);
+
+let selectedFeatures = select.getFeatures();
+selectedFeatures.on(['add', 'remove', 'change'], function () {
+  // as you select nodes on the map, populate the query params 'selected' field
+  // XXX TODO: implement selection on map load from selected param
+  const features = selectedFeatures.getArray();
+  //TODO: update query params with selection
+  let params = new URLSearchParams();
+  // multiple selections will be encoded with a (',') between them (%2C in query params)
+  params.set('selected', features.filter(function (x) {return !!x;}).map(function (x) {return x.get('id');}));
+
+  // change the current history to reflect the selection without triggering a refresh
+  if (features.length == 0) {
+    window.history.replaceState(null, null, '?');
+    return;
+  }
+  window.history.replaceState(null, null, '?' + params.toString());
+
+  //let gb = groupFeaturesBy(features, nodeCompositeKey);
+  //console.log("selected:", gb);
+  //console.log("selected", params);
+});
 
 map.on('moveend', onMoveEnd);
 
