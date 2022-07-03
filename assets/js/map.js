@@ -36,7 +36,25 @@ var nodePotentialStyle = new ol.style.Circle({
   stroke: null,
 });
 
-var linkPTPStyle = new ol.style.Stroke({color: 'green', width: 3});
+var createNodeLabel = function (text) {
+  var textStyle = new ol.style.Text({
+    font: '15px Calibri,sans-serif',
+    overflow: true,
+    fill: new ol.style.Fill({
+      color: '#000',
+    }),
+    offsetY: -15,
+    text: text,
+    stroke: new ol.style.Stroke({
+      color: '#fff',
+      width: 3,
+    }),
+  });
+
+  return textStyle;
+};
+
+var linkPTPStyle = new ol.style.Stroke({color: 'rgba(0, 255, 0, 0.4)', width: 5});
 
 var styles = {
   'Point': new ol.style.Style({
@@ -106,6 +124,10 @@ var createMapFeatureCoverage = function (geom, radius) {
   return feature;
 };
 
+var setElementIdHTML = function (id, val) {
+  document.getElementById(id).innerHTML = val;
+};
+
 // render the style for a feature that has a coverage bubble or arc
 var coverageStyleFunction = function (feature) {
   // TODO: figure out how to set zindex so coverage doesnt obscure nodes
@@ -168,6 +190,8 @@ var siteStyleFunction = function (feature) {
       return new ol.style.Style({image: nodeStyle});
     case 'hub':
       return new ol.style.Style({image: nodeHubStyle});
+    case 'datalink':
+      return new ol.style.Style({style: linkPTPStyle});
   }
 
   // fallback to render any other geometry not explicitly handled prior
@@ -180,7 +204,8 @@ function onMoveEnd(evt) {
 }
 
 function onFeaturesLoadEnd(evt) {
-  // compute coverage features from loaded features and push into computedCoverage
+  // inject map features for coverage overlay
+  // from loaded features and push into computedCoverage
   meshSource.forEachFeature(function (feature) {
     let r = feature.get('radius');
     if (r) {
@@ -200,9 +225,6 @@ function onFeaturesLoadEnd(evt) {
     'potential-nodes-total': 'potential-node',
     'active-nodes-total': 'active-node',
     'active-hubs-total': 'active-hub',
-  };
-  var setElementIdHTML = function (id, val) {
-    document.getElementById(id).innerHTML = val;
   };
   var getValue = function (coll, key) {
     if (key in coll) {
@@ -237,12 +259,14 @@ var map = new ol.Map({
         interpolate: true,
       })
     }),
+    // mesh node features layer
     new ol.layer.Vector({
       source: meshSource,
       style: siteStyleFunction,
     }),
-    // TODO: uncomment to render coverage bubbles
-    /*
+    // coverage bubbles layer
+    // XXX
+    /**
     new ol.layer.Vector({
       source: computedCoverage,
       style: coverageStyleFunction,
@@ -254,6 +278,41 @@ var map = new ol.Map({
     zoom: 15
   })
 });
+
+// a normal select interaction to handle clicking on a feature
+var getFeatureLabelText = function (feature) {
+  let label = "";
+  let name = feature.get('name');
+  let status = feature.get('status');
+  //let site = feature.get('site');
+  let nn = feature.get('network_number');
+  let type = feature.get('type');
+  // site 22 nn 43 -> s22n43
+  if (status == 'potential') {
+    label = status + " " + type;
+  } else if (type !== "" && nn > 0) {
+    return ("" + type + " " + nn);
+  }
+  if (name) {
+    label = name + " - " + label;
+  }
+  if (label === "") {
+    label = "unknown";
+  }
+  return label;
+};
+
+var select = new ol.interaction.Select({
+  style: function (feature) {
+    // when selecting a feature, annotate it with its name
+    let ogStyle = siteStyleFunction(feature);
+    let text = getFeatureLabelText(feature);
+    ogStyle.setText(createNodeLabel(text));
+    return ogStyle;
+  },
+});
+
+map.addInteraction(select);
 
 map.on('moveend', onMoveEnd);
 
