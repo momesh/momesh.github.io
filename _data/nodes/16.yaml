@@ -1,0 +1,7 @@
+---
+id: 16
+type: hub
+status: active
+network_number: 16
+location: '{"type":"Point","coordinates":[-91.41470665897387,38.83201143166808]}'
+hidden: false

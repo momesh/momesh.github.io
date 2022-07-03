@@ -1,0 +1,7 @@
+---
+id: 14
+type: node
+status: potential
+#network_number: 14 ??
+location: '{"type":"Point","coordinates":[-91.4152544752599,38.83276129277594]}'
+hidden: false
