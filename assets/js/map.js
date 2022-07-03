@@ -20,7 +20,7 @@ var nodeCompositeKey = function (feature) {
 
 var nodeHubStyle = new ol.style.Circle({
   radius: 7,
-  fill: new ol.style.Fill({color: "#008DD5"}),
+  fill: new ol.style.Fill({color: "#9A48D0"}),
   stroke: null,
 });
 
