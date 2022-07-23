@@ -1,9 +1,9 @@
 ---
-id: 2
+id: 21
 type: node
-network_number: ""
 status: potential
+network_number: 21
 location: '{"type":"Point","coordinates":[-91.4180962,38.8333955]}'
 related_nodes:
-  - 3
+  - 22
 hidden: false
