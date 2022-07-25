@@ -31,6 +31,7 @@ nav_order: 2
 -   [What is involved in a typical installation?](#typicalinstall)
 -   [What will the hardware setup look like?](#hardwaresetup)
 -   [Can I use my existing home router?](#indoorrouter)
+-   [Can I DIY build and install my own node?](#diy)
 
 
 ## About MOMesh
@@ -122,7 +123,7 @@ Your private starlink/DSL/satellite internet is completely firewalled from the M
 
 ### <a name="outreach"></a>Do you have any flyers, handouts, or brochures I can send my neighbors?
 
-Absolutely! We keep links to [all the brochures, information cards, and flyers on our Outreach page](/docs/outreach#promo-materials). Please help spread the word by sharing a flyer with your neighbors!
+Absolutely! We keep links to [all the brochures, information cards, and flyers on our Outreach page](/outreach#promo-materials). Please help spread the word by sharing a flyer with your neighbors!
 ## Getting Connected to the Mesh
 
 ### <a name="covered"></a>How can I tell if I’m in the coverage zone for MOMesh?
@@ -163,3 +164,7 @@ You can take a closer look at the [wireless equipment](/equipment) we use to bui
 Absolutely! You can continue to use your existing home router, or indoor mesh system (i.e. Orbi, Google Wifi, etc) with internet service via MOMesh.
 
 Also relevant: [#dualwan](#dualwan)
+
+### <a name="diy"></a>Can I DIY build and install my own node?
+
+We are huge proponents of Do-It-Yourself culture, and encourage anyone who is interested in learning more about how computers can connect us together to build your own mesh node, and take part in helping us operate the network! Check out the [overview of how DIY installations work here](/docs/diy).

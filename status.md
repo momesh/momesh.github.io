@@ -14,7 +14,8 @@ _no updates_
 {% endif %}
 
 <ul>
-{% for update in site.updates %}
+{% assign updates = site.updates | sort | reverse %}
+{% for update in updates %}
 <li>{{update.date | date_to_string}} - <a href="{{ update.url }}">{{ update.title }}</a></li>
 {% endfor %}
 </ul>

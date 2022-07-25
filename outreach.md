@@ -1,6 +1,6 @@
 ---
 title: Outreach
-parent: Documentation
+parent: Home
 layout: docs
 ---
 
