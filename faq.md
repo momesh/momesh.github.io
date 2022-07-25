@@ -22,6 +22,7 @@ nav_order: 2
 -   [How can I volunteer? What if I don’t know anything about networking?](#volunteer)
 -   [What if I already have Starlink, or want to keep my existing provider as backup?](#dualwan)
 -   [Will joining the Mesh mean other Mesh users will use my Starlink connection?](#connectionsharing)
+-   [Do you have any flyers, handouts, or brochures I can send my neighbors?](#outreach)
 
 
 ### Getting Connected to the Mesh
@@ -119,6 +120,9 @@ No.
 
 Your private starlink/DSL/satellite internet is completely firewalled from the Mesh. We do not send any traffic out of your personal internet provider.
 
+### <a name="outreach"></a>Do you have any flyers, handouts, or brochures I can send my neighbors?
+
+Absolutely! We keep links to [all the brochures, information cards, and flyers on our Outreach page](/docs/outreach#promo-materials). Please help spread the word by sharing a flyer with your neighbors!
 ## Getting Connected to the Mesh
 
 ### <a name="covered"></a>How can I tell if I’m in the coverage zone for MOMesh?
