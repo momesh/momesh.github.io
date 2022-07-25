@@ -17,9 +17,11 @@ MOMesh is building a community owned and operated wireless network and WISP in M
 
 ## Join our community network!
 
-- [**Get Connected**](/join) for reliable, community-owned internet
+- [**Join the mesh**](/join) for reliable, community-owned internet
 - [**Read the FAQ**](/faq) to learn about how MOMesh works
 - [**Donate**](/donate) to help us expand the network
-- [**Learn**](/docs) about our [network](/docs/network_overview) and [gear](/equipment)
+- [**Learn**](/docs) about our [network](/docs/network_overview), [gear](/equipment), and [DIY options](/docs/diy)
+- [**Read our blog**](/status) for the latest updates
+- [**Download**](/outreach/#promo-materials) PDFs to spread the word!
 
 We are just getting started, and are currently building our core infrastructure. If you are interested in helping us get started, [let us know you are interested](/join)!
