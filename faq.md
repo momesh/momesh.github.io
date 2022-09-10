@@ -83,15 +83,17 @@ MOMesh believes that the Internet is for everyone. By operating as a volunteer r
 - Average one-time node equipment cost: **~$240** (see [equipment](/equipment) for details)
 - Average one-time installation costs: **$50** (including mounting gear, hardware, cable, etc)
 
-Once connected, we also ask that you set up a [recurring monthly donation](/donate) to support the network of $30, $50, or even $60. We rely on these donations to maintain and expand our network. We have no staff and are entirely volunteer based, and appreciate your support to help us build and operate our network, for the good of the community.
+Once connected, we also ask that you set up a [recurring monthly donation](/donate) of $30 per month. Your donations go directly to help us maintain and expand our network. We have no staff and are entirely volunteer based, and appreciate your support to help us build and operate our network, for the good of the community.
 
-If the above suggested donations are too much for you to afford, we can get you connected all the same, just reach out! Internet is a human right.
+Please note that costs quoted above are estimates based on market hardware costs.
+
+If the above suggested donations are too much for you to afford, we can get you connected all the same, just [reach out to us](/join)! **Internet is a human right.**
 
 ### <a name="cost"></a>What does building a hub cost?
 
 The base hardware and installation costs for a [hub](/docs/hubs) are the same as a regular node ([see above](#cost)). Additionally, 1 or more sector antennas are used to further distribute access downstream to other members.
 
-A rough equipment cost estimate for a hub (1x omnitik, 1x uplink PTP, 3x 5GHz downstream sectors) is **~$580**. Please see [hubs](/docs/hubs) for more information.
+A rough equipment cost estimate for a hub (1x omnitik, 1x uplink PTP, 3x 5GHz downstream sectors) is **~$580** (depends on market rates for gear). Please see [hubs](/docs/hubs) for more information.
 
 ### <a name="free"></a>I heard that MOMesh was free Internet. Is that true?
 
